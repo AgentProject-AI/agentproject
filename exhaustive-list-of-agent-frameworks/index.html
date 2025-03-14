@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-root" content="/agentproject">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.795269675612">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.6.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Exhaustive list of Agent Frameworks</title>
+    <meta name="title" content="Exhaustive list of Agent Frameworks">
+    <meta name="description" content="Description: Framework for orchestrating, optimizing, and automating LLM workflows with multi-agent systems.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://rajeev.github.io/agentproject/exhaustive-list-of-agent-frameworks/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rajeev.github.io/agentproject/exhaustive-list-of-agent-frameworks/">
+    <meta property="og:title" content="Exhaustive list of Agent Frameworks">
+    <meta property="og:description" content="Description: Framework for orchestrating, optimizing, and automating LLM workflows with multi-agent systems.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rajeev.github.io/agentproject/exhaustive-list-of-agent-frameworks/">
+    <meta property="twitter:title" content="Exhaustive list of Agent Frameworks">
+    <meta property="twitter:description" content="Description: Framework for orchestrating, optimizing, and automating LLM workflows with multi-agent systems.">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../resources/css/retype.css?v=3.6.0.795269675612" rel="stylesheet">
+
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.6.0.795269675612" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.6.0.795269675612" data-turbo-eval="false" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../" class="flex items-center leading-snug text-xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Agent Project</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="exhaustive-list-of-agent-frameworks" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exhaustive-list-of-agent-frameworks">#</doc-anchor-trigger>
+        <span>Exhaustive list of Agent Frameworks</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="ag2">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ag2">#</doc-anchor-trigger>
+        <span>AG2</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Framework for orchestrating, optimizing, and automating LLM
+workflows with multi-agent systems.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="ai-sdk">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ai-sdk">#</doc-anchor-trigger>
+        <span>AI SDK</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Unified API for building AI-powered applications with
+JavaScript and TypeScript.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="agent-pilot">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#agent-pilot">#</doc-anchor-trigger>
+        <span>Agent Pilot</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Create, manage, and chat with AI workflows seamlessly.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="agent-zero">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#agent-zero">#</doc-anchor-trigger>
+        <span>Agent Zero</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A dynamic, general-purpose framework for creating custom AI
+Agents.</li>
+<li><strong>Website</strong>: <a href="https://github.com/frdel/agent-zero">Agent Zero</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="agentforge">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#agentforge">#</doc-anchor-trigger>
+        <span>AgentForge</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A Python framework for creating, testing, and deploying
+LLM-powered agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="agentlabs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#agentlabs">#</doc-anchor-trigger>
+        <span>AgentLabs</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Open-source universal frontend for your AI Agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="agentflow">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#agentflow">#</doc-anchor-trigger>
+        <span>Agentflow</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Powerfully simple AI agent framework.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="agno">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#agno">#</doc-anchor-trigger>
+        <span>Agno</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Lightweight, high-performance, modal agnostic agent
+framework.</li>
+<li><strong>Website</strong>: <a href="https://docs.agno.com/introduction">Agno</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="airtop-api">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#airtop-api">#</doc-anchor-trigger>
+        <span>Airtop API</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Intelligent browser automation API for AI agents.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="atomic-agents">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#atomic-agents">#</doc-anchor-trigger>
+        <span>Atomic Agents</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Modular framework for building agentic AI applications with
+ease and flexibility.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="autogpt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autogpt">#</doc-anchor-trigger>
+        <span>AutoGPT</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: AI agent that autonomously performs tasks by breaking them down
+into subtasks.</li>
+<li><strong>Website</strong>: <a href="https://agpt.co/">AutoGPT</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="autogen">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autogen">#</doc-anchor-trigger>
+        <span>AutoGen</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: An Open-Source Programming Framework for Agentic AI from
+Microsoft</li>
+<li><strong>Website</strong>: <a href="https://github.com/microsoft/autogen">AutoGen</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="ax">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ax">#</doc-anchor-trigger>
+        <span>Ax</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Build LLM powered Agents and Agentic workflows&quot;.&quot;</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="baml">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#baml">#</doc-anchor-trigger>
+        <span>BAML</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A DSL for building production ready applications powered by
+LLMs.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="baseaidev">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#baseaidev">#</doc-anchor-trigger>
+        <span>BaseAI.dev</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: The easiest open-source way to build Serverless autonomous AI
+agents with memory and tools.</li>
+<li><strong>Website</strong>: <a href="https://baseai.dev/">BaseAI.dev</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="bee-agent-framework">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bee-agent-framework">#</doc-anchor-trigger>
+        <span>Bee Agent Framework</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Open-source framework for building, deploying, and serving
+powerful agentic workflows at scale.</li>
+<li><strong>Website</strong>: <a href="https://github.com/i-am-bee/bee-agent-framework">Bee Agent Framework</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="bondai">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bondai">#</doc-anchor-trigger>
+        <span>BondAI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Framework for building AI agents with memory, context, and
+multiple integrations.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="burr-framework">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#burr-framework">#</doc-anchor-trigger>
+        <span>Burr Framework</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Build applications that make decisions (chatbots, agents,
+simulations, etc...).</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="camel">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#camel">#</doc-anchor-trigger>
+        <span>CAMEL</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Multi-agent systems, synthetic data generation, task
+automation, world simulation.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="chatarena">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#chatarena">#</doc-anchor-trigger>
+        <span>ChatArena</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A framework for creating multi-agent language game environments
+for AI models.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="chatdev">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#chatdev">#</doc-anchor-trigger>
+        <span>ChatDev</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Coding Agents. Virtual software company that operates through
+various intelligent agents holding different roles.</li>
+<li><strong>Website</strong>: <a href="https://github.com/OpenBMB/ChatDev">ChatDev</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="codefuse">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#codefuse">#</doc-anchor-trigger>
+        <span>Codefuse</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A Multi-Agent FrameWork For Faster Build Agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="controlflow">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#controlflow">#</doc-anchor-trigger>
+        <span>ControlFlow</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A Python framework for orchestrating AI-powered workflows with
+task-centric design.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="crab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#crab">#</doc-anchor-trigger>
+        <span>Crab</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Framework for building LLM agent benchmark environments in a
+Python-centric way.</li>
+<li><strong>Website</strong>: <a href="https://www.camel-ai.org/">Crab</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="crewai">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#crewai">#</doc-anchor-trigger>
+        <span>CrewAI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Platform for Multi AI Agents System for complex task
+execution.</li>
+<li><strong>Website</strong>: <a href="http://www.crew.ai">CrewAI</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="dagent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dagent">#</doc-anchor-trigger>
+        <span>DAGent</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A framework for building AI agents using Directed Acyclic
+Graphs (DAGs).</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="dspy">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dspy">#</doc-anchor-trigger>
+        <span>DSPy</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Automated prompt optimization framework for building AI
+Agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="dendrite">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dendrite">#</doc-anchor-trigger>
+        <span>Dendrite</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: The world&#x27;s first developer toolkit that makes any website
+fully accessible to AI Agents.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="elizaos">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#elizaos">#</doc-anchor-trigger>
+        <span>ElizaOS</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Powerful multi-agent simulation framework for creating and
+managing autonomous AI agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="fabrice-ai">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#fabrice-ai">#</doc-anchor-trigger>
+        <span>Fabrice AI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A lightweight, functional, and composable framework for
+building AI agents. No PhD required.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="fastagency">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#fastagency">#</doc-anchor-trigger>
+        <span>FastAgency</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: The fastest way to bring multi-agent workflows to production.</li>
+<li><strong>Website</strong>: <a href="https://fastagency.ai/">FastAgency</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="floai">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#floai">#</doc-anchor-trigger>
+        <span>FloAI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Simple way to create composable AI agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="gpt-computer-assistantgca">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gpt-computer-assistantgca">#</doc-anchor-trigger>
+        <span>GPT Computer Assistant(GCA)</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Dockerized Computer Use Agents with Production Ready API&#x27;s.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="gptswarm">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gptswarm">#</doc-anchor-trigger>
+        <span>GPTSwarm</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A scalable framework for building and optimizing AI agent
+swarms to tackle complex tasks.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="gaiahub">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gaiahub">#</doc-anchor-trigger>
+        <span>GaiaHub</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: GaiaHub is a hub where developers create and share building
+blocks that can be used to create AI App.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="griptape">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#griptape">#</doc-anchor-trigger>
+        <span>Griptape</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Framework for creating AI agents with minimal coding.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="guardrails-ai">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#guardrails-ai">#</doc-anchor-trigger>
+        <span>Guardrails AI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Framework for developing safe and reliable Generative AI
+applications.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="gwenflow">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gwenflow">#</doc-anchor-trigger>
+        <span>Gwenflow</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A framework for orchestrating applications powered by
+autonomous AI agents and LLMs.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="haystack">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#haystack">#</doc-anchor-trigger>
+        <span>Haystack</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: An open-source NLP framework for building search systems and
+conversational AI.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="internet-of-agents">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#internet-of-agents">#</doc-anchor-trigger>
+        <span>Internet of Agents</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Open-source framework enabling AI agents to collaborate and
+tackle complex tasks together.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="julep">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#julep">#</doc-anchor-trigger>
+        <span>Julep</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Framework for creating AI agents that remember past
+interactions and can perform complex tasks.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="kaibanjs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#kaibanjs">#</doc-anchor-trigger>
+        <span>KaibanJS</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: KaibanJS -&gt; Kanban for AI Agents. JavaScript Framework for
+Building Multi-Agent Systems.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="lagent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lagent">#</doc-anchor-trigger>
+        <span>LAgent</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Open-source framework for building and deploying AI agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="lm-kit-sdk">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lm-kit-sdk">#</doc-anchor-trigger>
+        <span>LM-Kit SDK</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Build Smarter Apps with Language Models with .Net SDKs.</li>
+<li><strong>Website</strong>: <a href="https://lm-kit.com/">LM-Kit SDK</a></li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="lavague">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lavague">#</doc-anchor-trigger>
+        <span>LaVague</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Large Action Models framework to build AI Web Agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="langroid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#langroid">#</doc-anchor-trigger>
+        <span>Langroid</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Multi-agent programming framework for LLM applications.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="litellm">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#litellm">#</doc-anchor-trigger>
+        <span>LiteLLM</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Unified interface for multiple LLM APIs.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="livekit-for-voice-agents">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#livekit-for-voice-agents">#</doc-anchor-trigger>
+        <span>Livekit for Voice Agents</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: realtime agents for voice</li>
+<li><strong>Website</strong>: <a href="https://docs.livekit.io/agents/">Livekit for Voice Agents</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="llamagym">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#llamagym">#</doc-anchor-trigger>
+        <span>LlamaGym</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Tool for fine-tuning LLM agents using reinforcement learning.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="llamaindex">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#llamaindex">#</doc-anchor-trigger>
+        <span>LlamaIndex</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: LlamaIndex is the leading data framework for building LLM
+applications.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="lobechat">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lobechat">#</doc-anchor-trigger>
+        <span>LobeChat</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: AI conversation platform with multi-model support.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="loopgpt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#loopgpt">#</doc-anchor-trigger>
+        <span>LoopGPT</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A modular Auto-GPT framework for building AI agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="lyzr-automata">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lyzr-automata">#</doc-anchor-trigger>
+        <span>Lyzr-automata</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A low-code multi-agent automation framework.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="marvin">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#marvin">#</doc-anchor-trigger>
+        <span>Marvin</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: AI toolkit for building natural language interfaces.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="metagpt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#metagpt">#</doc-anchor-trigger>
+        <span>MetaGPT</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: AI-driven multi-agent framework for automated software
+development and project management.</li>
+<li><strong>Website</strong>: <a href="https://github.com/geekan/MetaGPT">MetaGPT</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="mindsdb">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mindsdb">#</doc-anchor-trigger>
+        <span>MindsDB</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Database with functionality to create AI Agents</li>
+<li><strong>Website</strong>: <a href="https://docs.mindsdb.com/use-cases/ai_agents/overview">MindsDB AI Agents</a></li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="mini-llm-flow">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mini-llm-flow">#</doc-anchor-trigger>
+        <span>Mini LLM Flow</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Minimalist LLM Framework in 100 Lines. Enable LLMs to Program
+Themselves.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="mirascope">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mirascope">#</doc-anchor-trigger>
+        <span>Mirascope</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: An OSS Python toolkit for building AI agents and apps with
+abstractions that aren&#x27;t obstructions.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="mission-squad">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mission-squad">#</doc-anchor-trigger>
+        <span>Mission Squad</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Create your squad and give them a mission!</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="modelscope-agent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#modelscope-agent">#</doc-anchor-trigger>
+        <span>Modelscope-Agent</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: ModelScope-Agent: An agent framework connecting models in
+ModelScope with the world.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="multi-agent-orchestrator">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multi-agent-orchestrator">#</doc-anchor-trigger>
+        <span>Multi-Agent Orchestrator</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Flexible framework for managing multiple AI agents and handling
+complex conversations.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="multi-gpt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multi-gpt">#</doc-anchor-trigger>
+        <span>Multi-GPT</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: An experimental multi-agent system enabling collaboration
+between specialized AI experts.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="nemo-guardrails">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nemo-guardrails">#</doc-anchor-trigger>
+        <span>NeMo Guardrails</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Toolkit for adding programmable guardrails to LLM-based
+conversational AI.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="praisonai">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#praisonai">#</doc-anchor-trigger>
+        <span>PraisonAI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Multi AI Agents Framework to Automate Tasks.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="pydanticai">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pydanticai">#</doc-anchor-trigger>
+        <span>PydanticAI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Python Agent Framework for building production-grade Generative
+AI applications.</li>
+<li><strong>Website</strong>: <a href="https://ai.pydantic.dev/">PydanticAI</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="pyspur">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pyspur">#</doc-anchor-trigger>
+        <span>Pyspur</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Drag &amp; Drop AI Agent Builder with a focus on Developer
+Experience</li>
+<li><strong>Website</strong>: <a href="https://www.pyspur.dev/">Pyspur</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="quantalogic">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#quantalogic">#</doc-anchor-trigger>
+        <span>QuantaLogic</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: QuantaLogic is a ReAct (Reasoning &amp; Action) framework for
+building advanced AI agents.</li>
+<li><strong>Website</strong>: <a href="https://github.com/quantalogic/quantalogic">QuantaLogic</a></li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="qwen-agent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#qwen-agent">#</doc-anchor-trigger>
+        <span>Qwen Agent</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Framework for building LLM applications with Qwen models&#x27;
+advanced capabilities.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="requesty">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#requesty">#</doc-anchor-trigger>
+        <span>Requesty</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Easiest way to define create production ready AI
+applications.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="restack">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#restack">#</doc-anchor-trigger>
+        <span>Restack</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: The framework for autonomous intelligence.</li>
+<li><strong>Pricing Model</strong>: Paid</li>
+</ul>
+<doc-anchor-target id="rig">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rig">#</doc-anchor-trigger>
+        <span>Rig</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Build powerful, modular LLM applications in Rust with unified
+interfaces and high performance.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="smolagents">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#smolagents">#</doc-anchor-trigger>
+        <span>SmolAgents</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Lightweight AI agent development framework for rapid creation
+of powerful agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="smolagents-ai-agent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#smolagents-ai-agent">#</doc-anchor-trigger>
+        <span>Smolagents AI Agent</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Create AI agents with minimal code using Hugging Face&#x27;s
+lightweight framework.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="steamship">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#steamship">#</doc-anchor-trigger>
+        <span>Steamship</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Dev environment to build AI Agents in Production</li>
+<li><strong>Website</strong>: <a href="https://www.steamship.com/sdk">Steamship</a></li>
+<li><strong>Pricing Model</strong>: Free tier</li>
+</ul>
+<doc-anchor-target id="superagi">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#superagi">#</doc-anchor-trigger>
+        <span>SuperAGI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A dev-first, open-source framework for building and managing
+autonomous AI agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="taskweaver">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#taskweaver">#</doc-anchor-trigger>
+        <span>TaskWeaver</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A code-first agent framework for planning and executing data
+analytics tasks.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="thynk-forward">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#thynk-forward">#</doc-anchor-trigger>
+        <span>Thynk Forward</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Your business. Smarter. Faster.</li>
+<li><strong>Pricing Model</strong>: Paid</li>
+</ul>
+<doc-anchor-target id="twilio-ai-assistants">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#twilio-ai-assistants">#</doc-anchor-trigger>
+        <span>Twilio AI Assistants</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Opinionated framework to build and host conversational AI
+Assistants for customer-facing use cases.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="ufo">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ufo">#</doc-anchor-trigger>
+        <span>UFO</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: UI-focused multi-agent framework for Windows OS interactions.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="vectara-agentic">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#vectara-agentic">#</doc-anchor-trigger>
+        <span>Vectara-agentic</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Build AI assistants and Agents with Vectara.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="aixplain">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#aixplain">#</doc-anchor-trigger>
+        <span>aiXplain</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Production-ready AI Agents with Trusted outcomes, adaptable
+behavior, scalable deployment.</li>
+<li><strong>Website</strong>: <a href="https://aixplain.com/">aiXplain</a></li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="gptme">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gptme">#</doc-anchor-trigger>
+        <span>gptme</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Your agent in your terminal. Writes code, uses the terminal,
+browses the web, vision.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="n8n">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#n8n">#</doc-anchor-trigger>
+        <span>n8n</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Workflow automation platform combining AI with business
+processes. Connect anything to everything.</li>
+<li><strong>Pricing Model</strong>: Freemium</li>
+</ul>
+<doc-anchor-target id="uagent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#uagent">#</doc-anchor-trigger>
+        <span>uAgent</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: A library that allows creating autonomous AI agents in
+Python.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+<doc-anchor-target id="upsonicai">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#upsonicai">#</doc-anchor-trigger>
+        <span>upsonicAI</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Description</strong>: Task-oriented AI agent framework for digital workers and
+vertical AI agents.</li>
+<li><strong>Pricing Model</strong>: Free</li>
+</ul>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../topics/agent-framework-scorecard-explained/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Agent Framework Scorecard (Explained)</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../1-foundation-of-agent-projects/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">1. Foundation of Agent Projects</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2025. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Exhaustive list of Agent Frameworks", level: 1, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
