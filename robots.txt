@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rajeev.github.io/agentproject/sitemap.xml.gz
+Sitemap: https://agentproject-ai.github.io/agentproject/sitemap.xml.gz
