@@ -450,6 +450,12 @@
 - **Pricing Model**: Free
 
 
+### SimStudio
+
+- **Description**: Open-source AI Agent workflow builder
+- **Website**: [https://github.com/simstudioai/sim](https://github.com/simstudioai/sim)
+- **Pricing Model**: Free
+
 ### SmolAgents
 
 - **Description**: Lightweight AI agent development framework for rapid creation
