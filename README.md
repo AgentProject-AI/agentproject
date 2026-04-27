@@ -62,7 +62,7 @@ The github repo is here : [https://github.com/AgentProject-AI/agentproject](http
   * Implementing Reasoning RAG to rectify information.
 
 ### Part 3: Your Agent Project in Production
-* **[Top 10 AI Agent Security and Governance Controls (OWASP Style)](security/Top-10-AI-Agent-Security-and-Governance-Controls.md)  Strategies:**
+* **[Top 10 AI Agent Security and Governance Controls (OWASP Style)](security/Top-10-AI-Agent-Security-and-Governance-Controls.md)**
 * **Deployment Strategies:**
   * Considerations for deploying agent applications.
   * Containerization and orchestration.
