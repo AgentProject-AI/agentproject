@@ -1,0 +1,22 @@
+﻿# Welcome to the Agent Project
+
+> A practical guide written by practitioners to help get your Agents running, scaling, and operating in production.
+
+- [Welcome to the Agent Project](https://agentproject-ai.github.io/agentproject/readme.md): Welcome to the Agent Project
+- [Exhaustive list of Agent Frameworks](https://agentproject-ai.github.io/agentproject/exhaustive-list-of-agent-frameworks.md): Description: Framework for orchestrating, optimizing, and automating LLM workflows with multi-agent systems.
+- [1. Foundation of Agent Projects](https://agentproject-ai.github.io/agentproject/1-foundation-of-agent-projects/readme.md): Different Agent Workflow Patterns
+- [Authors](https://agentproject-ai.github.io/agentproject/authors.md): This is written by a community of practitioners
+
+## Topics
+
+### Which AI Agent framework to choose?
+
+- [Which AI Agent framework to choose?](https://agentproject-ai.github.io/agentproject/topics/which-ai-agent-framework-to-choose/readme.md): Before choosing an Agent framework, please refer to the Agent Framework Scorecard.
+- [Evaluating Microsoft Autogen](https://agentproject-ai.github.io/agentproject/topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen.md)
+- [Agent Framework Scorecard (Explained)](https://agentproject-ai.github.io/agentproject/topics/agent-framework-scorecard-explained.md): This is the scorecard framework explanation.
+
+## 1. Foundation of Agent Projects
+
+- [The key functional areas of an AI agent](https://agentproject-ai.github.io/agentproject/1-foundation-of-agent-projects/the-key-functional-areas-of-an-ai-agent.md): Functional areas of an AI Agent
+- [Different Agent Workflow Implementation Patterns](https://agentproject-ai.github.io/agentproject/1-foundation-of-agent-projects/different-agent-workflow-patterns.md): Different flavors of Agents workflows
+- [How to use Outcome, Role and Interaction (ORI) to design AI Agents for your organization](https://agentproject-ai.github.io/agentproject/1-foundation-of-agent-projects/how-to-use-outcome-role-and-interaction-ori-to-design-ai-agents-for-your-organization.md): In the rapidly evolving landscape of artificial intelligence, designing effective agent workflow systems requires a structured methodology that balances complexity with predictability.
