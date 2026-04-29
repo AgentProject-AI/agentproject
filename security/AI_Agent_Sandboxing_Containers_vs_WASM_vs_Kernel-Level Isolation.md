@@ -1,5 +1,3 @@
-content = """# Agentic AI Security: Comparing Containers, WASM, and Kernel-Level Sandboxing
-
 ## Executive Summary
 
 The shift from "AI that suggests" to "AI that acts" requires moving monitoring from the application layer to the **infrastructure layer**. If an agent is compromised, its own logs cannot be trusted for governance.
