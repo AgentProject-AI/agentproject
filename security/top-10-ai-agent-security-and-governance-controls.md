@@ -17,7 +17,7 @@ Top 10 AI Agent Security and Governance Controls (OWASP style list)
 ### 7. Secure supply chain & model integrity
 
 ### 8. Ephemeral execution & environment isolation 
-[<mark style="background-color:yellow;">**[AI Agent Sandboxing and Isolation</mark>](security/AI_Agent_Sandboxing_Containers_vs_WASM_vs_Kernel-Level_Isolation.md)** :thumbsup:AI Agent Sandboxing: Containers vs. WASM vs. Kernel-Level Isolation
+[<mark style="background-color:yellow;">**[AI Agent Sandboxing and Isolation</mark>](/security/AI_Agent_Sandboxing_Containers_vs_WASM_vs_Kernel-Level_Isolation.md)** :thumbsup:
 
 ### 9. Continuous security testing & adversarial evaluation
 
