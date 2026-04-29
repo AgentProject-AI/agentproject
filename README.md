@@ -36,7 +36,7 @@ The github repo is here : [https://github.com/AgentProject-AI/agentproject](http
 ### Part 2: Building Your Agent Project
 
 * **Choosing the Right Agentic Framework:**
-  * [<mark style="background-color:yellow;">A Scorecard for Agent Frameworks</mark>](topics/agent-framework-scorecard-explained.md) :thumbsup:
+  * A Scorecard for Agent Frameworks](topics/agent-framework-scorecard-explained.md) 
   * **Comparative analysis of AutoGen, CrewAI, LangGraph**:.
     * [Agent Framework Analysis of Microsoft Autogen](topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen.md)
 * Selecting the appropriate framework based on project requirements.
@@ -62,7 +62,7 @@ The github repo is here : [https://github.com/AgentProject-AI/agentproject](http
   * Implementing Reasoning RAG to rectify information.
 
 ### Part 3: Your Agent Project in Production
-* **[Top 10 AI Agent Security and Governance Controls (OWASP Style)](security/Top-10-AI-Agent-Security-and-Governance-Controls.md)**
+* [<mark style="background-color:yellow;">**[Top 10 AI Agent Security and Governance Controls (OWASP Style)</mark>](security/Top-10-AI-Agent-Security-and-Governance-Controls.md)** :thumbsup:
 * **Deployment Strategies:**
   * Considerations for deploying agent applications.
   * Containerization and orchestration.
