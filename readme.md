@@ -8,7 +8,8 @@ The github repo is here : [https://github.com/AgentProject-AI/agentproject](http
 
 ### Topics covered here
 
-(Please note that these are work-in-progress topics and will be filled out as we get experienced folks helping us out)
+(Please note that these are work-in-progress topics and will be filled out as we get experienced folks helping us out). The team is currently focused on building this out
+[<mark style="background-color:yellow;">**[Top 10 AI Agent Security and Governance Controls (OWASP Style)</mark>](security/Top-10-AI-Agent-Security-and-Governance-Controls.md)** :thumbsup:
 
 ### Part 1: Foundations of Agent Projects
 
