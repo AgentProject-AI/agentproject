@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/agentproject">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.830795718845">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.830796215619">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,11 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.830795718845" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.830796215619" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.830795718845" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.830796215619" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.830795718845" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.830796215619" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.830796215619" defer></script>
     <script id="mermaid-js" data-cfasync="false" src="../../resources/js/mermaid.js?v=4.5.3" defer></script>
 </head>
 <body>
@@ -151,22 +152,23 @@
                 <!-- Page content  -->
 <h1 id="ai-agent-sandboxing-containers-vs-wasm-vs-kernel-level-isolation">AI Agent Sandboxing Containers vs WASM vs Kernel-Level Isolation</h1>
 <p>content = &quot;&quot;&quot;# Agentic AI Security: Comparing Containers, WASM, and Kernel-Level Sandboxing</p>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>The shift from &quot;AI that suggests&quot; to &quot;AI that acts&quot; requires moving monitoring from the application layer to the <strong>infrastructure layer</strong>. If an agent is compromised, its own logs cannot be trusted for governance.</p>
+<hr>
 <p>In the era of <strong>Agentic Engineering</strong>, the primary security bottleneck is no longer the LLM’s output, but the <strong>Agent’s execution environment</strong>. When an agent transitions from &quot;thinking&quot; to &quot;doing&quot;—executing code, calling APIs, or manipulating file systems—it requires a secure, isolated perimeter.</p>
 <p>This technical deep-dive analyzes the three competing isolation paradigms: <strong>Containers (NemoClaw)</strong>, <strong>WASM (IronClaw)</strong>, and <strong>Kernel-Level Isolation (nono)</strong>, and how to monitor them for enterprise governance.</p>
-<hr>
-<h2 id="1-the-architecture-of-isolation">1. The Architecture of Isolation</h2>
-<p>The following diagram illustrates the hybrid routing and governance model required for production-grade AI agents.</p>
+<h2 id="architecture-overview">Architecture Overview</h2>
 <div class="overflow-hidden mb-6 py-4 dark:px-5 dark:bg-white rounded-md"><pre translate="no" class="mermaid w-full">graph TD
     %% Main Nodes
     User[User/Application]
     AgentRuntime[Agent Runtime]
-    ToolRouter[Tool Router (Hybrid Architecture)]
+    ToolRouter[&quot;Tool Router (Hybrid Architecture)&quot;]
 
     %% Sandbox Types
     subgraph Sandboxes
-        Container[Container Sandbox (NemoClaw)]
-        WASM[WASM Sandbox (IronClaw)]
-        Kernel[Kernel Isolation (nono)]
+        Container[&quot;Container Sandbox (NemoClaw)&quot;]
+        WASM[&quot;WASM Sandbox (IronClaw)&quot;]
+        Kernel[&quot;Kernel Isolation (nono)&quot;]
     end
 
     %% Monitoring/Governance Layer
@@ -205,7 +207,305 @@
     style Sandboxes fill:#f0f0f0,stroke:#333,stroke-width:2px
     style Governance fill:#e1f5fe,stroke:#01579b,stroke-width:1px
     style WORM fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,stroke-dasharray: 5 5
-    style ToolRouter fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px</pre></div>
+    style ToolRouter fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style WASM fill:#ffffff,stroke:#000000,stroke-width:1px
+    style AgentRuntime fill:#ffffff,stroke:#000000,stroke-width:1px</pre></div>
+<hr>
+<h2 id="1-deep-technical-trade-offs-the-blast-radius-vs-latency">1. Deep Technical Trade-offs: The &quot;Blast Radius&quot; vs. Latency</h2>
+<p>Choosing a sandbox isn&#x27;t just about speed; it&#x27;s about where the <strong>Security Boundary</strong> lies in the stack.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: left;">Architecture</th>
+<th style="text-align: left;">Security Boundary</th>
+<th style="text-align: left;">Memory Management</th>
+<th style="text-align: left;">Primary Failure Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>NemoClaw (Containers)</strong></td>
+<td style="text-align: left;">User-space / Kernel Namespace</td>
+<td style="text-align: left;">Virtualized (cgroups)</td>
+<td style="text-align: left;"><strong>Kernel Escapes:</strong> Shared kernel vulnerabilities (e.g., Dirty Pipe) allow host takeover.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>IronClaw (WASM)</strong></td>
+<td style="text-align: left;">Language Runtime / VM</td>
+<td style="text-align: left;">Linear (Software-isolated)</td>
+<td style="text-align: left;"><strong>Logic Bombs:</strong> Deterministic code that satisfies memory checks but triggers harmful API side effects.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>nono (Kernel)</strong></td>
+<td style="text-align: left;">Syscall Interface (Ring 0)</td>
+<td style="text-align: left;">Direct / Filtered</td>
+<td style="text-align: left;"><strong>Policy Fragility:</strong> A single missing syscall in the whitelist breaks the agent; too broad a list creates a hole.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="technical-nuance-the-cold-start-tax">Technical Nuance: The Cold-Start &quot;Tax&quot;</h3>
+<p>In <strong>Agentic Engineering</strong>, agents often work in recursive loops. If an agent calls a tool 10 times to solve a problem:</p>
+<ul>
+<li><strong>WASM:</strong> Adds <strong>20–50ms</strong> total overhead. Negligible.</li>
+<li><strong>Containers:</strong> Adds <strong>2–5s</strong> total overhead. This destroys the &quot;real-time&quot; feel of voice-native agents.</li>
+</ul>
+<p><strong>Key Insight:</strong> For high-frequency, low-latency operations (e.g., parsing, validation, data transformation), WASM provides the optimal balance. For operations requiring host resources (GPU, filesystem), containers remain necessary.</p>
+<hr>
+<h2 id="2-governance--monitoring-strategy">2. Governance &amp; Monitoring Strategy</h2>
+<p>Governance requires <strong>Unforgeable Evidence</strong>. We use the &quot;Malware Sandboxing Principle&quot;: <em>Observe from a layer the subject cannot see or reach.</em></p>
+<h3 id="a-container-monitoring-ebpf-based-tracing-azazelgrafana-beyla">A. Container Monitoring: eBPF-Based Tracing (Azazel/Grafana Beyla)</h3>
+<p>Because agents in containers share the host kernel, we monitor them using <strong>eBPF (Extended Berkeley Packet Filter)</strong>.</p>
+<p><strong>The Hook:</strong> Attach kprobes to <code translate="no" v-pre>sys_open</code>, <code translate="no" v-pre>sys_write</code>, and <code translate="no" v-pre>tcp_connect</code>.</p>
+<p><strong>Governance Outcome:</strong> You get a live stream of every file the agent touched and every IP it contacted, even if the agent tries to delete its own bash history.</p>
+<p><strong>Key Metric:</strong> <strong>&quot;Unexpected Outbound Entropy&quot;</strong> — Alert if an agent suddenly initiates a connection to an external IP not in its known tool manifest.</p>
+<p><strong>Implementation Example:</strong></p>
+<div id="a-container-monitoring-ebpf-based-tracing-azazelgrafana-beyla-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-c"><code v-pre class="language-c">// eBPF probe attached to sys_open
+SEC(&quot;kprobe/sys_open&quot;)
+int trace_open(struct pt_regs *ctx) {
+    char filename[256];
+    bpf_probe_read_user_str(&amp;filename, sizeof(filename), (void *)PT_REGS_PARM1(ctx));
+
+    // Log to perf buffer for userspace analysis
+    submit_event(EVENT_FILE_OPEN, filename);
+    return 0;
+}</code></pre>
+</doc-codeblock></div>
+<h3 id="b-wasm-monitoring-capability-provenance-mcp-sandboxscan">B. WASM Monitoring: Capability Provenance (MCP-SandboxScan)</h3>
+<p>In WASM, we monitor the <strong>Imports/Exports</strong> table.</p>
+<p><strong>The Hook:</strong> Use a <strong>Proxy-WASI</strong> layer. Every time the WASM module calls <code translate="no" v-pre>fd_write</code> (to log) or an external host function, the proxy intercepts it.</p>
+<p><strong>Governance Outcome:</strong> Create an <strong>Audit Trail of Intent</strong>. If an agent module requests access to a file handle it wasn&#x27;t assigned at instantiation, the runtime kills the process before the first byte is read.</p>
+<p><strong>Key Metric:</strong> <strong>&quot;Resource Exhaustion Ratio&quot;</strong> — Monitor linear memory growth. AI agents generating infinite loops can &quot;OOM&quot; (Out of Memory) a host process if not capped.</p>
+<p><strong>Architecture Pattern:</strong></p>
+<div id="b-wasm-monitoring-capability-provenance-mcp-sandboxscan-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">WASM Module → Proxy-WASI → Capability Check → Host Function
+                    ↓
+              Audit Log Entry</code></pre>
+</doc-codeblock></div>
+<h3 id="c-kernel-level-monitoring-syscall-audit-logs">C. Kernel-Level Monitoring: Syscall Audit Logs</h3>
+<p>For <strong>nono</strong>, monitoring is native to the Linux Audit Framework (<code translate="no" v-pre>auditd</code>).</p>
+<p><strong>The Hook:</strong> Monitor <code translate="no" v-pre>SECCOMP_RET_TRACE</code> events.</p>
+<p><strong>Governance Outcome:</strong> Provable compliance. You can provide a signed log to auditors showing that the agent <em>physically could not</em> execute a <code translate="no" v-pre>socket()</code> call because the kernel blocked the instruction at the CPU level.</p>
+<p><strong>Key Metric:</strong> <strong>&quot;Policy Violation Frequency&quot;</strong> — A high number of blocked syscalls indicates either an attempted &quot;Jailbreak&quot; or a poorly configured agent.</p>
+<p><strong>Example Seccomp Policy:</strong></p>
+<div id="c-kernel-level-monitoring-syscall-audit-logs-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-c"><code v-pre class="language-c">// Whitelist-only approach for sensitive agents
+scmp_filter_ctx ctx = seccomp_init(SCMP_ACT_KILL);
+seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(read), 0);
+seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(write), 0);
+seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(exit), 0);
+// Notably absent: socket, connect, bind
+seccomp_load(ctx);</code></pre>
+</doc-codeblock></div>
+<hr>
+<h2 id="3-the-governance-dashboard-the-three-pillars">3. The Governance Dashboard: &quot;The Three Pillars&quot;</h2>
+<p>To ensure enterprise-grade accountability, your governance framework should emphasize these three pillars:</p>
+<h3 id="1-traceability-the-whowhat">1. Traceability (The &quot;Who/What&quot;)</h3>
+<p>Mapping every LLM &quot;thought&quot; to a specific infrastructure &quot;action&quot;.</p>
+<p><strong>Example:</strong> <code translate="no" v-pre>&quot;Agent reasoned to delete file&quot;</code> → <code translate="no" v-pre>&quot;Kernel recorded unlink() syscall&quot;</code></p>
+<p><strong>Implementation:</strong></p>
+<ul>
+<li>Correlate LLM decision IDs with syscall timestamps</li>
+<li>Store reasoning traces alongside system events</li>
+<li>Create bidirectional links between agent actions and infrastructure logs</li>
+</ul>
+<h3 id="2-integrity-the-is-it-safe">2. Integrity (The &quot;Is it Safe?&quot;)</h3>
+<p>Real-time drift detection. If an agent&#x27;s behavior pattern deviates from its &quot;Vibe Code&quot; blueprint, the sandbox auto-freezes.</p>
+<p><strong>Techniques:</strong></p>
+<ul>
+<li>Behavioral fingerprinting: Establish baseline patterns during agent initialization</li>
+<li>Anomaly detection: Machine learning models trained on normal agent behavior</li>
+<li>Circuit breakers: Automatic suspension when deviation thresholds are exceeded</li>
+</ul>
+<p><strong>Metrics to Monitor:</strong></p>
+<ul>
+<li>Syscall frequency distribution</li>
+<li>Network connection patterns</li>
+<li>File access patterns</li>
+<li>Resource consumption trends</li>
+</ul>
+<h3 id="3-accountability-the-audit">3. Accountability (The &quot;Audit&quot;)</h3>
+<p>Storing sandboxing logs in a Write-Once-Read-Many (WORM) vault, ensuring the agent cannot &quot;gaslight&quot; the logs after a security incident.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Immutable storage (S3 Object Lock, WORM-compliant storage)</li>
+<li>Cryptographic signing of log entries</li>
+<li>Tamper-evident data structures (Merkle trees)</li>
+<li>Time-stamping from trusted sources</li>
+</ul>
+<p><strong>Compliance Benefits:</strong></p>
+<ul>
+<li>Forensic analysis capability</li>
+<li>Regulatory compliance (SOC 2, ISO 27001)</li>
+<li>Legal defensibility</li>
+<li>Incident reconstruction</li>
+</ul>
+<hr>
+<h2 id="4-hybrid-architecture-decision-matrix">4. Hybrid Architecture Decision Matrix</h2>
+<p>Use this decision tree to route agent operations to the appropriate sandbox:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: left;">Operation Type</th>
+<th style="text-align: left;">Characteristics</th>
+<th style="text-align: left;">Recommended Sandbox</th>
+<th style="text-align: left;">Monitoring Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Data Processing</strong></td>
+<td style="text-align: left;">High-frequency, CPU-bound, no external I/O</td>
+<td style="text-align: left;">WASM (IronClaw)</td>
+<td style="text-align: left;">Proxy-WASI capability tracking</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>API Integrations</strong></td>
+<td style="text-align: left;">Network calls, external services</td>
+<td style="text-align: left;">Container (NemoClaw)</td>
+<td style="text-align: left;">eBPF network tracing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>File Operations</strong></td>
+<td style="text-align: left;">Local filesystem access</td>
+<td style="text-align: left;">Container (NemoClaw)</td>
+<td style="text-align: left;">eBPF file access tracking</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sensitive Operations</strong></td>
+<td style="text-align: left;">PII handling, financial transactions</td>
+<td style="text-align: left;">Kernel (nono)</td>
+<td style="text-align: left;">Syscall audit logs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GPU Workloads</strong></td>
+<td style="text-align: left;">Model inference, image processing</td>
+<td style="text-align: left;">Container (NemoClaw)</td>
+<td style="text-align: left;">eBPF + cgroup metrics</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Untrusted Code</strong></td>
+<td style="text-align: left;">User-submitted scripts, plugins</td>
+<td style="text-align: left;">WASM (IronClaw) or Kernel (nono)</td>
+<td style="text-align: left;">Maximum isolation + audit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="5-implementation-roadmap">5. Implementation Roadmap</h2>
+<h3 id="phase-1-foundation-weeks-1-4">Phase 1: Foundation (Weeks 1-4)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Deploy eBPF monitoring for container-based agents</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Implement basic syscall filtering for sensitive operations</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Establish WORM storage for audit logs</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Create initial behavioral baselines</li>
+</ul>
+<h3 id="phase-2-wasm-integration-weeks-5-8">Phase 2: WASM Integration (Weeks 5-8)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Deploy Proxy-WASI layer</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Migrate high-frequency operations to WASM sandboxes</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Implement capability-based security model</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Establish resource consumption limits</li>
+</ul>
+<h3 id="phase-3-advanced-governance-weeks-9-12">Phase 3: Advanced Governance (Weeks 9-12)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Deploy anomaly detection models</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Implement auto-freeze mechanisms</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Create governance dashboard</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Establish incident response procedures</li>
+</ul>
+<h3 id="phase-4-optimization-ongoing">Phase 4: Optimization (Ongoing)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Tune performance vs. security trade-offs</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Refine behavioral baselines</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Optimize monitoring overhead</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Expand compliance coverage</li>
+</ul>
+<hr>
+<h2 id="6-key-metrics-for-success">6. Key Metrics for Success</h2>
+<h3 id="security-metrics">Security Metrics</h3>
+<ul>
+<li><strong>Time to Detection (TTD):</strong> Average time to detect anomalous behavior</li>
+<li><strong>Policy Violation Rate:</strong> Percentage of attempted unauthorized actions</li>
+<li><strong>False Positive Rate:</strong> Incorrect anomaly detections requiring tuning</li>
+</ul>
+<h3 id="performance-metrics">Performance Metrics</h3>
+<ul>
+<li><strong>Monitoring Overhead:</strong> CPU/Memory cost of governance layer (target: &lt;5%)</li>
+<li><strong>Latency Impact:</strong> P95/P99 latency added by sandboxing (target: &lt;50ms for WASM, &lt;500ms for containers)</li>
+<li><strong>Throughput:</strong> Operations per second under full monitoring</li>
+</ul>
+<h3 id="compliance-metrics">Compliance Metrics</h3>
+<ul>
+<li><strong>Audit Coverage:</strong> Percentage of agent actions with complete audit trail (target: 100%)</li>
+<li><strong>Log Integrity:</strong> Cryptographic verification success rate (target: 100%)</li>
+<li><strong>Retention Compliance:</strong> Adherence to data retention policies (target: 100%)</li>
+</ul>
+<hr>
+<h2 id="7-seo-keywords--positioning">7. SEO Keywords &amp; Positioning</h2>
+<p><strong>Primary Keywords:</strong></p>
+<ul>
+<li>eBPF AI Monitoring</li>
+<li>Agentic Governance</li>
+<li>Syscall Filtering for LLMs</li>
+<li>WASI Security Audit</li>
+<li>Zero-Trust AI Execution</li>
+</ul>
+<p><strong>Secondary Keywords:</strong></p>
+<ul>
+<li>AI Agent Sandboxing</li>
+<li>Enterprise AI Security</li>
+<li>Autonomous Agent Compliance</li>
+<li>LLM Runtime Security</li>
+<li>Unforgeable AI Audit Trails</li>
+</ul>
+<p><strong>SEO Snippet:</strong></p>
+<blockquote>
+<p>&quot;Traditional logging fails for autonomous agents. Enterprise-grade AI governance requires eBPF kernel tracing and WASM capability-based security to ensure unforgeable audit trails. Learn how to implement infrastructure-layer monitoring for AI agents that act, not just suggest.&quot;</p>
+</blockquote>
+<hr>
+<h2 id="8-references--further-reading">8. References &amp; Further Reading</h2>
+<h3 id="technical-documentation">Technical Documentation</h3>
+<ul>
+<li><a href="https://ebpf.io/what-is-ebpf/">eBPF Documentation</a></li>
+<li><a href="https://github.com/WebAssembly/WASI/blob/main/docs/Security.md">WASI Security Model</a></li>
+<li><a href="https://man7.org/linux/man-pages/man8/auditd.8.html">Linux Audit Framework</a></li>
+<li><a href="https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html">Seccomp BPF</a></li>
+</ul>
+<h3 id="related-projects">Related Projects</h3>
+<ul>
+<li><strong>NemoClaw:</strong> Container-based AI agent sandboxing</li>
+<li><strong>IronClaw:</strong> WASM runtime for AI agents</li>
+<li><strong>nono:</strong> Kernel-level syscall filtering</li>
+<li><strong>Grafana Beyla:</strong> eBPF-based observability</li>
+<li><strong>Azazel:</strong> Advanced eBPF tracing toolkit</li>
+</ul>
+<h3 id="security-resources">Security Resources</h3>
+<ul>
+<li>OWASP AI Security &amp; Privacy Guide</li>
+<li>NIST AI Risk Management Framework</li>
+<li>CIS Benchmarks for Container Security</li>
+</ul>
+<hr>
+<h2 id="9-conclusion">9. Conclusion</h2>
+<p>The evolution from &quot;AI that suggests&quot; to &quot;AI that acts&quot; represents a fundamental shift in how we must approach governance and security. Traditional application-layer logging is insufficient when the application itself may be compromised.</p>
+<p>By implementing infrastructure-layer monitoring through:</p>
+<ul>
+<li><strong>eBPF tracing</strong> for container-based agents</li>
+<li><strong>Capability-based security</strong> for WASM modules</li>
+<li><strong>Syscall filtering</strong> for sensitive operations</li>
+<li><strong>Immutable audit logs</strong> for accountability</li>
+</ul>
+<p>Organizations can achieve the <strong>Three Pillars of AI Governance</strong>: Traceability, Integrity, and Accountability.</p>
+<p>This hybrid architecture allows organizations to balance performance, security, and compliance requirements while enabling truly autonomous AI agents to operate safely in production environments.</p>
+<hr>
+<p><strong>Document Version:</strong> 1.0
+<strong>Last Updated:</strong> 2026-04-29
+<strong>Status:</strong> Production Ready</p>
 
                 
                 <!-- Required only on API pages -->
@@ -251,6 +551,6 @@
 
     <div id="retype-overlay-target"></div>
 
-        <script data-cfasync="false">window.__DOCS__ = { "title": "AI Agent Sandboxing Containers vs WASM vs Kernel-Level Isolation", level: 2, icon: "file", hasPrism: false, hasInstagram: false, hasMermaid: true, hasMath: false, tocDepth: 23, "md": "/security/ai_agent_sandboxing_containers_vs_wasm_vs_kernel-level-isolation.md" }</script>
+        <script data-cfasync="false">window.__DOCS__ = { "title": "AI Agent Sandboxing Containers vs WASM vs Kernel-Level Isolation", level: 2, icon: "file", hasPrism: true, hasInstagram: false, hasMermaid: true, hasMath: false, tocDepth: 23, "md": "/security/ai_agent_sandboxing_containers_vs_wasm_vs_kernel-level-isolation.md" }</script>
 </body>
 </html>
