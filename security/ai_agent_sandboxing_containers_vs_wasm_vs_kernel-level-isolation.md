@@ -67,7 +67,7 @@ graph TD
 
 ---
 
-## 1. Deep Technical Trade-offs: The "Blast Radius" vs. Latency
+## 1. Trade-offs: The "Impact Radius" vs. Latency
 
 Choosing a sandbox isn't just about speed; it's about where the **Security Boundary** lies in the stack.
 
