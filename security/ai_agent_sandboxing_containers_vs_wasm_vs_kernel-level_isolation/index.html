@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/agentproject">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.830872118937">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.830872398942">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.830872118937" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.830872398942" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.830872118937" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.830872398942" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.830872118937" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.830872118937" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.830872398942" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.830872398942" defer></script>
     <script id="mermaid-js" data-cfasync="false" src="../../resources/js/mermaid.js?v=4.5.3" defer></script>
 </head>
 <body>
@@ -160,14 +160,14 @@
     User[User/Application]
 
     %% Trusted Layer
-    subgraph TrustedLayer[&quot;🔒 Trusted Host Layer&quot;]
+    subgraph TrustedLayer[&quot;🔒 Trusted Application Layer&quot;]
         AgentRuntime[&quot;Agent Runtime&lt;br/&gt;(Orchestration, LLM API Calls, State Management)&quot;]
         ToolRouter[&quot;Tool Router&lt;br/&gt;(Routing Logic &amp; Permissions)&quot;]
     end
 
-    %% Untrusted Execution Layer
-    subgraph UntrustedLayer[&quot;⚠️ Untrusted Execution Layer&quot;]
-        subgraph Sandboxes[&quot;Tool Execution Sandboxes&quot;]
+    %% Sandboxed Execution Layer
+    subgraph SandboxedLayer[&quot;🛡️ Sandboxed Execution Layer&lt;br/&gt;(Trusted Isolation Mechanisms)&quot;]
+        subgraph Sandboxes[&quot;Executing LLM-Directed Operations&quot;]
             Container[&quot;Container Sandbox (NemoClaw)&lt;br/&gt;File I/O, Network, GPU Access&quot;]
             WASM[&quot;WASM Sandbox (IronClaw)&lt;br/&gt;CPU-bound Logic, Data Processing&quot;]
             Kernel[&quot;Kernel Isolation (nono)&lt;br/&gt;Sensitive Operations, PII Handling&quot;]
@@ -208,14 +208,16 @@
 
     %% Styling
     style TrustedLayer fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px
-    style UntrustedLayer fill:#ffebee,stroke:#c62828,stroke-width:3px
+    style SandboxedLayer fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
     style GovernanceLayer fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     style WORM fill:#fff9c4,stroke:#f57f17,stroke-width:3px,stroke-dasharray: 5 5
     style Sandboxes fill:#fafafa,stroke:#424242,stroke-width:2px</pre></div>
 <hr>
 <h2 id="understanding-the-trust-boundary">Understanding the Trust Boundary</h2>
-<h3 id="why-the-agent-runtime-lives-outside-the-sandbox">Why the Agent Runtime Lives Outside the Sandbox</h3>
-<p>A critical architectural decision in this design is that the <strong>Agent Runtime</strong> operates in the <strong>Trusted Host Layer</strong>, while only <strong>tool executions</strong> occur in the <strong>Untrusted Execution Layer</strong>.</p>
+<h3 id="the-trust-model-sandboxes-are-trusted-operations-inside-are-not">The Trust Model: Sandboxes Are Trusted, Operations Inside Are Not</h3>
+<p>A critical architectural decision in this design is that the <strong>Agent Runtime</strong> operates in the <strong>Trusted Application Layer</strong>, while <strong>tool executions</strong> occur in the <strong>Sandboxed Execution Layer</strong>.</p>
+<p><strong>Important Clarification:</strong> The sandboxes themselves (Container, WASM, Kernel filters) are <strong>trusted security mechanisms</strong>. What&#x27;s untrusted are the <strong>operations being executed inside them</strong> (LLM-directed tool calls, user inputs, external API responses).</p>
+<p>Think of it like a prison: We trust the prison walls and guards (the sandbox infrastructure). We don&#x27;t trust the prisoners (the operations derived from LLM output). The sandbox is the <strong>solution</strong>, not the problem.</p>
 <h4 id="what-the-agent-runtime-does-trusted-operations">What the Agent Runtime Does (Trusted Operations)</h4>
 <p>The Agent Runtime is your <strong>orchestration layer</strong> that:</p>
 <ol>
@@ -228,15 +230,16 @@
 <li><strong>Enforces business logic</strong> - Rate limits, quotas, policy checks</li>
 </ol>
 <p><strong>Key Insight:</strong> The runtime is <strong>your code</strong> - version-controlled, reviewed, and deployed like any other application. It doesn&#x27;t execute user-provided code or LLM-generated scripts. It only makes API calls and routing decisions.</p>
-<h4 id="what-gets-sandboxed-untrusted-operations">What Gets Sandboxed (Untrusted Operations)</h4>
-<p>Tool executions are sandboxed because they:</p>
+<h4 id="what-gets-sandboxed-operations-requiring-isolation">What Gets Sandboxed (Operations Requiring Isolation)</h4>
+<p>Tool executions run inside <strong>trusted sandbox mechanisms</strong> because the operations themselves are risky:</p>
 <ul>
-<li><strong>Execute based on LLM output</strong> (unpredictable and potentially malicious)</li>
+<li><strong>Execute based on LLM output</strong> (unpredictable, could be influenced by prompt injection)</li>
 <li><strong>Handle external/user data</strong> (untrusted inputs that could contain injections)</li>
 <li><strong>Perform system-level operations</strong> (file I/O, network calls, process spawning)</li>
 <li><strong>Access sensitive resources</strong> (databases, APIs, file systems)</li>
 <li><strong>May run generated code</strong> (for code interpreter agents)</li>
 </ul>
+<p><strong>The sandbox infrastructure is trusted.</strong> We rely on containers, WASM runtimes, and kernel filters to safely contain these risky operations.</p>
 <h4 id="the-threat-model">The Threat Model</h4>
 <div id="the-threat-model-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-none"><code v-pre class="language-none">┌─────────────────────────────────────────────────────────┐
@@ -251,10 +254,19 @@
 ┌─────────────────────────────────────────────────────────┐
 │ DEFENSE IN DEPTH                                        │
 ├─────────────────────────────────────────────────────────┤
-│ Runtime (Trusted)  → Validates schemas, enforces limits │
-│ Router (Trusted)   → Routes to appropriate sandbox      │
-│ Sandbox (Untrust)  → Executes with minimal privileges   │
-│ Governance (Infra) → Records everything, immutably      │
+│ Runtime (Trusted)    → Validates schemas, enforces limits │
+│ Router (Trusted)     → Routes to appropriate sandbox      │
+│ Sandbox (Trusted)    → Isolates risky operations         │
+│ Governance (Trusted) → Records everything, immutably      │
+└─────────────────────────────────────────────────────────┘
+         ↓ All layers are trusted infrastructure ↓
+┌─────────────────────────────────────────────────────────┐
+│ WHAT'S ACTUALLY UNTRUSTED                               │
+├─────────────────────────────────────────────────────────┤
+│ • LLM output directing tool calls                       │
+│ • User-provided parameters                              │
+│ • External API responses                                │
+│ • Generated code (if executing code interpreter)        │
 └─────────────────────────────────────────────────────────┘</code></pre>
 </doc-codeblock></div>
 <h4 id="performance-implications">Performance Implications</h4>

@@ -13,14 +13,14 @@ graph TD
     User[User/Application]
 
     %% Trusted Layer
-    subgraph TrustedLayer["🔒 Trusted Host Layer"]
+    subgraph TrustedLayer["🔒 Trusted Application Layer"]
         AgentRuntime["Agent Runtime<br/>(Orchestration, LLM API Calls, State Management)"]
         ToolRouter["Tool Router<br/>(Routing Logic & Permissions)"]
     end
 
-    %% Untrusted Execution Layer
-    subgraph UntrustedLayer["⚠️ Untrusted Execution Layer"]
-        subgraph Sandboxes["Tool Execution Sandboxes"]
+    %% Sandboxed Execution Layer
+    subgraph SandboxedLayer["🛡️ Sandboxed Execution Layer<br/>(Trusted Isolation Mechanisms)"]
+        subgraph Sandboxes["Executing LLM-Directed Operations"]
             Container["Container Sandbox (NemoClaw)<br/>File I/O, Network, GPU Access"]
             WASM["WASM Sandbox (IronClaw)<br/>CPU-bound Logic, Data Processing"]
             Kernel["Kernel Isolation (nono)<br/>Sensitive Operations, PII Handling"]
@@ -61,7 +61,7 @@ graph TD
 
     %% Styling
     style TrustedLayer fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px
-    style UntrustedLayer fill:#ffebee,stroke:#c62828,stroke-width:3px
+    style SandboxedLayer fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
     style GovernanceLayer fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     style WORM fill:#fff9c4,stroke:#f57f17,stroke-width:3px,stroke-dasharray: 5 5
     style Sandboxes fill:#fafafa,stroke:#424242,stroke-width:2px
@@ -71,9 +71,13 @@ graph TD
 
 ## Understanding the Trust Boundary
 
-### Why the Agent Runtime Lives Outside the Sandbox
+### The Trust Model: Sandboxes Are Trusted, Operations Inside Are Not
 
-A critical architectural decision in this design is that the **Agent Runtime** operates in the **Trusted Host Layer**, while only **tool executions** occur in the **Untrusted Execution Layer**.
+A critical architectural decision in this design is that the **Agent Runtime** operates in the **Trusted Application Layer**, while **tool executions** occur in the **Sandboxed Execution Layer**.
+
+**Important Clarification:** The sandboxes themselves (Container, WASM, Kernel filters) are **trusted security mechanisms**. What's untrusted are the **operations being executed inside them** (LLM-directed tool calls, user inputs, external API responses).
+
+Think of it like a prison: We trust the prison walls and guards (the sandbox infrastructure). We don't trust the prisoners (the operations derived from LLM output). The sandbox is the **solution**, not the problem.
 
 #### What the Agent Runtime Does (Trusted Operations)
 
@@ -89,15 +93,17 @@ The Agent Runtime is your **orchestration layer** that:
 
 **Key Insight:** The runtime is **your code** - version-controlled, reviewed, and deployed like any other application. It doesn't execute user-provided code or LLM-generated scripts. It only makes API calls and routing decisions.
 
-#### What Gets Sandboxed (Untrusted Operations)
+#### What Gets Sandboxed (Operations Requiring Isolation)
 
-Tool executions are sandboxed because they:
+Tool executions run inside **trusted sandbox mechanisms** because the operations themselves are risky:
 
-- **Execute based on LLM output** (unpredictable and potentially malicious)
+- **Execute based on LLM output** (unpredictable, could be influenced by prompt injection)
 - **Handle external/user data** (untrusted inputs that could contain injections)
 - **Perform system-level operations** (file I/O, network calls, process spawning)
 - **Access sensitive resources** (databases, APIs, file systems)
 - **May run generated code** (for code interpreter agents)
+
+**The sandbox infrastructure is trusted.** We rely on containers, WASM runtimes, and kernel filters to safely contain these risky operations.
 
 #### The Threat Model
 
@@ -114,10 +120,19 @@ Tool executions are sandboxed because they:
 ┌─────────────────────────────────────────────────────────┐
 │ DEFENSE IN DEPTH                                        │
 ├─────────────────────────────────────────────────────────┤
-│ Runtime (Trusted)  → Validates schemas, enforces limits │
-│ Router (Trusted)   → Routes to appropriate sandbox      │
-│ Sandbox (Untrust)  → Executes with minimal privileges   │
-│ Governance (Infra) → Records everything, immutably      │
+│ Runtime (Trusted)    → Validates schemas, enforces limits │
+│ Router (Trusted)     → Routes to appropriate sandbox      │
+│ Sandbox (Trusted)    → Isolates risky operations         │
+│ Governance (Trusted) → Records everything, immutably      │
+└─────────────────────────────────────────────────────────┘
+         ↓ All layers are trusted infrastructure ↓
+┌─────────────────────────────────────────────────────────┐
+│ WHAT'S ACTUALLY UNTRUSTED                               │
+├─────────────────────────────────────────────────────────┤
+│ • LLM output directing tool calls                       │
+│ • User-provided parameters                              │
+│ • External API responses                                │
+│ • Generated code (if executing code interpreter)        │
 └─────────────────────────────────────────────────────────┘
 ```
 
