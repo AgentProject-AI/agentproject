@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/agentproject">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.830804971306">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.830872118937">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.830804971306" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.830872118937" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.830804971306" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.830872118937" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.830804971306" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.830804971306" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.830872118937" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.830872118937" defer></script>
     <script id="mermaid-js" data-cfasync="false" src="../../resources/js/mermaid.js?v=4.5.3" defer></script>
 </head>
 <body>
@@ -153,64 +153,161 @@
 <h1 id="ai-agent-sandboxing-containers-vs-wasm-vs-kernel-level-isolation">AI Agent Sandboxing Containers vs WASM vs Kernel-Level Isolation</h1>
 <h2 id="executive-summary">Executive Summary</h2>
 <p>The shift from &quot;AI that suggests&quot; to &quot;AI that acts&quot; requires moving monitoring from the application layer to the <strong>infrastructure layer</strong>. If an agent is compromised, its own logs cannot be trusted for governance.</p>
+<p>This document provides a deep-technical breakdown of the trade-offs and the multi-layer monitoring strategy required for enterprise governance of autonomous AI agents.</p>
 <hr>
-<p>In the era of <strong>Agentic Engineering</strong>, the primary security bottleneck is no longer the LLM’s output, but the <strong>Agent’s execution environment</strong>. When an agent transitions from &quot;thinking&quot; to &quot;doing&quot;—executing code, calling APIs, or manipulating file systems—it requires a secure, isolated perimeter.</p>
-<p>This technical deep-dive analyzes the three competing isolation paradigms: <strong>Containers (NemoClaw)</strong>, <strong>WASM (IronClaw)</strong>, and <strong>Kernel-Level Isolation (nono)</strong>, and how to monitor them for enterprise governance.</p>
 <h2 id="architecture-overview">Architecture Overview</h2>
 <div class="overflow-hidden mb-6 py-4 dark:px-5 dark:bg-white rounded-md"><pre translate="no" class="mermaid w-full">graph TD
-    %% Main Nodes
     User[User/Application]
-    AgentRuntime[Agent Runtime]
-    ToolRouter[&quot;Tool Router (Hybrid Architecture)&quot;]
 
-    %% Sandbox Types
-    subgraph Sandboxes
-        Container[&quot;Container Sandbox (NemoClaw)&quot;]
-        WASM[&quot;WASM Sandbox (IronClaw)&quot;]
-        Kernel[&quot;Kernel Isolation (nono)&quot;]
+    %% Trusted Layer
+    subgraph TrustedLayer[&quot;🔒 Trusted Host Layer&quot;]
+        AgentRuntime[&quot;Agent Runtime&lt;br/&gt;(Orchestration, LLM API Calls, State Management)&quot;]
+        ToolRouter[&quot;Tool Router&lt;br/&gt;(Routing Logic &amp; Permissions)&quot;]
     end
 
-    %% Monitoring/Governance Layer
-    subgraph Governance
-        eBPF[eBPF Tracing: sys_open, tcp_connect]
-        ProxyWASI[Proxy-WASI: Intercept Capabilities]
-        AuditLog[Syscall Audit Logs: auditd]
+    %% Untrusted Execution Layer
+    subgraph UntrustedLayer[&quot;⚠️ Untrusted Execution Layer&quot;]
+        subgraph Sandboxes[&quot;Tool Execution Sandboxes&quot;]
+            Container[&quot;Container Sandbox (NemoClaw)&lt;br/&gt;File I/O, Network, GPU Access&quot;]
+            WASM[&quot;WASM Sandbox (IronClaw)&lt;br/&gt;CPU-bound Logic, Data Processing&quot;]
+            Kernel[&quot;Kernel Isolation (nono)&lt;br/&gt;Sensitive Operations, PII Handling&quot;]
+        end
     end
 
-    %% Storage
-    WORM[WORM Vault: Governance Evidence]
+    %% Infrastructure Governance Layer
+    subgraph GovernanceLayer[&quot;🛡️ Infrastructure Governance Layer&quot;]
+        eBPF[&quot;eBPF Tracing&lt;br/&gt;sys_open, sys_write, tcp_connect&quot;]
+        ProxyWASI[&quot;Proxy-WASI&lt;br/&gt;Capability Intercept &amp; Validation&quot;]
+        AuditLog[&quot;Syscall Audit Logs&lt;br/&gt;auditd + SECCOMP_RET_TRACE&quot;]
+    end
 
-    %% Flow: Execution
-    User --&gt;|Requests Action| AgentRuntime
-    AgentRuntime --&gt;|Identifies Tool Call| ToolRouter
+    %% Immutable Storage
+    WORM[&quot;📦 WORM Vault&lt;br/&gt;(Unforgeable Evidence Storage)&quot;]
 
-    %% hybrid decision logic
-    ToolRouter --&gt;|1. Local &amp; GPU Required| Container
-    ToolRouter --&gt;|2. High-Frequency Logic| WASM
-    ToolRouter --&gt;|3. Sensitive/Regulated| Kernel
+    %% Flow: Execution Path
+    User --&gt;|&quot;User Request&quot;| AgentRuntime
+    AgentRuntime --&gt;|&quot;LLM determines&lt;br/&gt;tool call needed&quot;| ToolRouter
 
-    %% Flow: Observation
-    eBPF -.-&gt;|Observes| Container
-    ProxyWASI -.-&gt;|Intercepts| WASM
-    AuditLog -.-&gt;|Captures| Kernel
+    %% Routing Decision Logic
+    ToolRouter --&gt;|&quot;1. Requires Host Resources&lt;br/&gt;(Files, Network, GPU)&quot;| Container
+    ToolRouter --&gt;|&quot;2. High-Frequency Logic&lt;br/&gt;(Parsing, Validation)&quot;| WASM
+    ToolRouter --&gt;|&quot;3. Sensitive Operations&lt;br/&gt;(PII, Financial Data)&quot;| Kernel
 
-    %% Flow: Log Delivery
-    eBPF --&gt;|Unforgeable Evidence| WORM
-    ProxyWASI --&gt;|Intent Audit| WORM
-    AuditLog --&gt;|Provable Compliance| WORM
+    %% Governance Observation (Dotted = Passive Monitoring)
+    eBPF -.-&gt;|&quot;Kernel-level&lt;br/&gt;Observation&quot;| Container
+    ProxyWASI -.-&gt;|&quot;Runtime&lt;br/&gt;Interception&quot;| WASM
+    AuditLog -.-&gt;|&quot;Syscall&lt;br/&gt;Capture&quot;| Kernel
 
-    %% Feedback loop
-    WORM -.-&gt;|Accountability| User
+    %% Audit Trail Flow
+    eBPF --&gt;|&quot;File/Network Events&quot;| WORM
+    ProxyWASI --&gt;|&quot;Capability Requests&quot;| WORM
+    AuditLog --&gt;|&quot;Blocked Syscalls&quot;| WORM
+
+    %% Accountability Loop
+    WORM -.-&gt;|&quot;Forensics &amp;&lt;br/&gt;Compliance Reports&quot;| User
 
     %% Styling
-    style Sandboxes fill:#f0f0f0,stroke:#333,stroke-width:2px
-    style Governance fill:#e1f5fe,stroke:#01579b,stroke-width:1px
-    style WORM fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,stroke-dasharray: 5 5
-    style ToolRouter fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    style WASM fill:#ffffff,stroke:#000000,stroke-width:1px
-    style AgentRuntime fill:#ffffff,stroke:#000000,stroke-width:1px</pre></div>
+    style TrustedLayer fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px
+    style UntrustedLayer fill:#ffebee,stroke:#c62828,stroke-width:3px
+    style GovernanceLayer fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style WORM fill:#fff9c4,stroke:#f57f17,stroke-width:3px,stroke-dasharray: 5 5
+    style Sandboxes fill:#fafafa,stroke:#424242,stroke-width:2px</pre></div>
 <hr>
-<h2 id="1-trade-offs-the-impact-radius-vs-latency">1. Trade-offs: The &quot;Impact Radius&quot; vs. Latency</h2>
+<h2 id="understanding-the-trust-boundary">Understanding the Trust Boundary</h2>
+<h3 id="why-the-agent-runtime-lives-outside-the-sandbox">Why the Agent Runtime Lives Outside the Sandbox</h3>
+<p>A critical architectural decision in this design is that the <strong>Agent Runtime</strong> operates in the <strong>Trusted Host Layer</strong>, while only <strong>tool executions</strong> occur in the <strong>Untrusted Execution Layer</strong>.</p>
+<h4 id="what-the-agent-runtime-does-trusted-operations">What the Agent Runtime Does (Trusted Operations)</h4>
+<p>The Agent Runtime is your <strong>orchestration layer</strong> that:</p>
+<ol>
+<li><strong>Receives and validates user requests</strong> - Handles authentication and authorization</li>
+<li><strong>Calls LLM APIs</strong> (OpenAI, Anthropic, etc.) - Sends prompts and receives reasoning</li>
+<li><strong>Parses LLM responses</strong> - Extracts tool calls and validates parameters</li>
+<li><strong>Routes tool executions</strong> - Delegates to appropriate sandboxes via the Tool Router</li>
+<li><strong>Manages session state</strong> - Maintains conversation context across multiple turns</li>
+<li><strong>Aggregates results</strong> - Combines outputs from multiple tool calls</li>
+<li><strong>Enforces business logic</strong> - Rate limits, quotas, policy checks</li>
+</ol>
+<p><strong>Key Insight:</strong> The runtime is <strong>your code</strong> - version-controlled, reviewed, and deployed like any other application. It doesn&#x27;t execute user-provided code or LLM-generated scripts. It only makes API calls and routing decisions.</p>
+<h4 id="what-gets-sandboxed-untrusted-operations">What Gets Sandboxed (Untrusted Operations)</h4>
+<p>Tool executions are sandboxed because they:</p>
+<ul>
+<li><strong>Execute based on LLM output</strong> (unpredictable and potentially malicious)</li>
+<li><strong>Handle external/user data</strong> (untrusted inputs that could contain injections)</li>
+<li><strong>Perform system-level operations</strong> (file I/O, network calls, process spawning)</li>
+<li><strong>Access sensitive resources</strong> (databases, APIs, file systems)</li>
+<li><strong>May run generated code</strong> (for code interpreter agents)</li>
+</ul>
+<h4 id="the-threat-model">The Threat Model</h4>
+<div id="the-threat-model-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">┌─────────────────────────────────────────────────────────┐
+│ ATTACK VECTORS                                          │
+├─────────────────────────────────────────────────────────┤
+│ 1. Prompt Injection → LLM generates malicious tool call │
+│ 2. Compromised API → Returns poisoned data to tool      │
+│ 3. LLM Hallucination → Invalid/dangerous parameters     │
+│ 4. User Input Attack → SQL injection, path traversal    │
+└─────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────┐
+│ DEFENSE IN DEPTH                                        │
+├─────────────────────────────────────────────────────────┤
+│ Runtime (Trusted)  → Validates schemas, enforces limits │
+│ Router (Trusted)   → Routes to appropriate sandbox      │
+│ Sandbox (Untrust)  → Executes with minimal privileges   │
+│ Governance (Infra) → Records everything, immutably      │
+└─────────────────────────────────────────────────────────┘</code></pre>
+</doc-codeblock></div>
+<h4 id="performance-implications">Performance Implications</h4>
+<p>Keeping the runtime outside sandboxes is critical for performance:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: left;">Scenario</th>
+<th style="text-align: left;">Runtime Outside</th>
+<th style="text-align: left;">Runtime Inside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Agent processes 10 tool calls</strong></td>
+<td style="text-align: left;">~500ms total</td>
+<td style="text-align: left;">~20-50s total</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Session state access</strong></td>
+<td style="text-align: left;">In-memory (instant)</td>
+<td style="text-align: left;">Requires persistent volume (slow)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Concurrent users</strong></td>
+<td style="text-align: left;">1 shared runtime</td>
+<td style="text-align: left;">N containerized runtimes</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cost (1000 requests/day)</strong></td>
+<td style="text-align: left;">~$5-10</td>
+<td style="text-align: left;">~$50-100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Critical for voice-native agents:</strong> Voice agents require &lt;200ms response time. Container startup overhead (2-5s) destroys the conversational experience.</p>
+<h4 id="when-the-runtime-must-be-sandboxed">When the Runtime MUST Be Sandboxed</h4>
+<p>If your runtime performs <strong>any</strong> of these operations, it must be sandboxed:</p>
+<ul>
+<li><span class="docs-emoji">&#x2705;</span> <strong>Executes LLM-generated Python/JavaScript code</strong> (code interpreter agents)</li>
+<li><span class="docs-emoji">&#x2705;</span> <strong>Runs user-uploaded plugins or configurations</strong></li>
+<li><span class="docs-emoji">&#x2705;</span> <strong>Allows dynamic code loading</strong> (eval, exec, require from user input)</li>
+<li><span class="docs-emoji">&#x2705;</span> <strong>Multi-tenant SaaS</strong> where customers bring their own agent code</li>
+</ul>
+<p>For these cases, use a <strong>nested sandbox architecture</strong>:</p>
+<div id="when-the-runtime-must-be-sandboxed-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">Host (Trusted) → Runtime Container (Untrusted) → Tool Sandboxes (Maximum Isolation)</code></pre>
+</doc-codeblock></div>
+<p>Examples: OpenAI Code Interpreter, Jupyter-based agents, agent marketplaces.</p>
+<hr>
+<h2 id="1-deep-technical-trade-offs-the-blast-radius-vs-latency">1. Deep Technical Trade-offs: The &quot;Blast Radius&quot; vs. Latency</h2>
 <p>Choosing a sandbox isn&#x27;t just about speed; it&#x27;s about where the <strong>Security Boundary</strong> lies in the stack.</p>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
@@ -445,7 +542,29 @@ seccomp_load(ctx);</code></pre>
 <li><strong>Retention Compliance:</strong> Adherence to data retention policies (target: 100%)</li>
 </ul>
 <hr>
-<h2 id="7-references--further-reading">7. References &amp; Further Reading</h2>
+<h2 id="7-seo-keywords--positioning">7. SEO Keywords &amp; Positioning</h2>
+<p><strong>Primary Keywords:</strong></p>
+<ul>
+<li>eBPF AI Monitoring</li>
+<li>Agentic Governance</li>
+<li>Syscall Filtering for LLMs</li>
+<li>WASI Security Audit</li>
+<li>Zero-Trust AI Execution</li>
+</ul>
+<p><strong>Secondary Keywords:</strong></p>
+<ul>
+<li>AI Agent Sandboxing</li>
+<li>Enterprise AI Security</li>
+<li>Autonomous Agent Compliance</li>
+<li>LLM Runtime Security</li>
+<li>Unforgeable AI Audit Trails</li>
+</ul>
+<p><strong>SEO Snippet:</strong></p>
+<blockquote>
+<p>&quot;Traditional logging fails for autonomous agents. Enterprise-grade AI governance requires eBPF kernel tracing and WASM capability-based security to ensure unforgeable audit trails. Learn how to implement infrastructure-layer monitoring for AI agents that act, not just suggest.&quot;</p>
+</blockquote>
+<hr>
+<h2 id="8-references--further-reading">8. References &amp; Further Reading</h2>
 <h3 id="technical-documentation">Technical Documentation</h3>
 <ul>
 <li><a href="https://ebpf.io/what-is-ebpf/">eBPF Documentation</a></li>
@@ -468,7 +587,7 @@ seccomp_load(ctx);</code></pre>
 <li>CIS Benchmarks for Container Security</li>
 </ul>
 <hr>
-<h2 id="8-conclusion">8. Conclusion</h2>
+<h2 id="9-conclusion">9. Conclusion</h2>
 <p>The evolution from &quot;AI that suggests&quot; to &quot;AI that acts&quot; represents a fundamental shift in how we must approach governance and security. Traditional application-layer logging is insufficient when the application itself may be compromised.</p>
 <p>By implementing infrastructure-layer monitoring through:</p>
 <ul>

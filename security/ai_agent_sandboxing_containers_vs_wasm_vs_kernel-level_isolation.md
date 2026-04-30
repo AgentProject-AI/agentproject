@@ -2,72 +2,157 @@
 
 The shift from "AI that suggests" to "AI that acts" requires moving monitoring from the application layer to the **infrastructure layer**. If an agent is compromised, its own logs cannot be trusted for governance.
 
+This document provides a deep-technical breakdown of the trade-offs and the multi-layer monitoring strategy required for enterprise governance of autonomous AI agents.
+
 ---
-
-In the era of **Agentic Engineering**, the primary security bottleneck is no longer the LLM’s output, but the **Agent’s execution environment**. When an agent transitions from "thinking" to "doing"—executing code, calling APIs, or manipulating file systems—it requires a secure, isolated perimeter.
-
-This technical deep-dive analyzes the three competing isolation paradigms: **Containers (NemoClaw)**, **WASM (IronClaw)**, and **Kernel-Level Isolation (nono)**, and how to monitor them for enterprise governance.
 
 ## Architecture Overview
 
 ```mermaid
 graph TD
-    %% Main Nodes
     User[User/Application]
-    AgentRuntime[Agent Runtime]
-    ToolRouter["Tool Router (Hybrid Architecture)"]
 
-    %% Sandbox Types
-    subgraph Sandboxes
-        Container["Container Sandbox (NemoClaw)"]
-        WASM["WASM Sandbox (IronClaw)"]
-        Kernel["Kernel Isolation (nono)"]
+    %% Trusted Layer
+    subgraph TrustedLayer["🔒 Trusted Host Layer"]
+        AgentRuntime["Agent Runtime<br/>(Orchestration, LLM API Calls, State Management)"]
+        ToolRouter["Tool Router<br/>(Routing Logic & Permissions)"]
     end
 
-    %% Monitoring/Governance Layer
-    subgraph Governance
-        eBPF[eBPF Tracing: sys_open, tcp_connect]
-        ProxyWASI[Proxy-WASI: Intercept Capabilities]
-        AuditLog[Syscall Audit Logs: auditd]
+    %% Untrusted Execution Layer
+    subgraph UntrustedLayer["⚠️ Untrusted Execution Layer"]
+        subgraph Sandboxes["Tool Execution Sandboxes"]
+            Container["Container Sandbox (NemoClaw)<br/>File I/O, Network, GPU Access"]
+            WASM["WASM Sandbox (IronClaw)<br/>CPU-bound Logic, Data Processing"]
+            Kernel["Kernel Isolation (nono)<br/>Sensitive Operations, PII Handling"]
+        end
     end
 
-    %% Storage
-    WORM[WORM Vault: Governance Evidence]
+    %% Infrastructure Governance Layer
+    subgraph GovernanceLayer["🛡️ Infrastructure Governance Layer"]
+        eBPF["eBPF Tracing<br/>sys_open, sys_write, tcp_connect"]
+        ProxyWASI["Proxy-WASI<br/>Capability Intercept & Validation"]
+        AuditLog["Syscall Audit Logs<br/>auditd + SECCOMP_RET_TRACE"]
+    end
 
-    %% Flow: Execution
-    User -->|Requests Action| AgentRuntime
-    AgentRuntime -->|Identifies Tool Call| ToolRouter
+    %% Immutable Storage
+    WORM["📦 WORM Vault<br/>(Unforgeable Evidence Storage)"]
 
-    %% hybrid decision logic
-    ToolRouter -->|1. Local & GPU Required| Container
-    ToolRouter -->|2. High-Frequency Logic| WASM
-    ToolRouter -->|3. Sensitive/Regulated| Kernel
+    %% Flow: Execution Path
+    User -->|"User Request"| AgentRuntime
+    AgentRuntime -->|"LLM determines<br/>tool call needed"| ToolRouter
 
-    %% Flow: Observation
-    eBPF -.->|Observes| Container
-    ProxyWASI -.->|Intercepts| WASM
-    AuditLog -.->|Captures| Kernel
+    %% Routing Decision Logic
+    ToolRouter -->|"1. Requires Host Resources<br/>(Files, Network, GPU)"| Container
+    ToolRouter -->|"2. High-Frequency Logic<br/>(Parsing, Validation)"| WASM
+    ToolRouter -->|"3. Sensitive Operations<br/>(PII, Financial Data)"| Kernel
 
-    %% Flow: Log Delivery
-    eBPF -->|Unforgeable Evidence| WORM
-    ProxyWASI -->|Intent Audit| WORM
-    AuditLog -->|Provable Compliance| WORM
+    %% Governance Observation (Dotted = Passive Monitoring)
+    eBPF -.->|"Kernel-level<br/>Observation"| Container
+    ProxyWASI -.->|"Runtime<br/>Interception"| WASM
+    AuditLog -.->|"Syscall<br/>Capture"| Kernel
 
-    %% Feedback loop
-    WORM -.->|Accountability| User
+    %% Audit Trail Flow
+    eBPF -->|"File/Network Events"| WORM
+    ProxyWASI -->|"Capability Requests"| WORM
+    AuditLog -->|"Blocked Syscalls"| WORM
+
+    %% Accountability Loop
+    WORM -.->|"Forensics &<br/>Compliance Reports"| User
 
     %% Styling
-    style Sandboxes fill:#f0f0f0,stroke:#333,stroke-width:2px
-    style Governance fill:#e1f5fe,stroke:#01579b,stroke-width:1px
-    style WORM fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,stroke-dasharray: 5 5
-    style ToolRouter fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    style WASM fill:#ffffff,stroke:#000000,stroke-width:1px
-    style AgentRuntime fill:#ffffff,stroke:#000000,stroke-width:1px
+    style TrustedLayer fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px
+    style UntrustedLayer fill:#ffebee,stroke:#c62828,stroke-width:3px
+    style GovernanceLayer fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style WORM fill:#fff9c4,stroke:#f57f17,stroke-width:3px,stroke-dasharray: 5 5
+    style Sandboxes fill:#fafafa,stroke:#424242,stroke-width:2px
 ```
 
 ---
 
-## 1. Trade-offs: The "Impact Radius" vs. Latency
+## Understanding the Trust Boundary
+
+### Why the Agent Runtime Lives Outside the Sandbox
+
+A critical architectural decision in this design is that the **Agent Runtime** operates in the **Trusted Host Layer**, while only **tool executions** occur in the **Untrusted Execution Layer**.
+
+#### What the Agent Runtime Does (Trusted Operations)
+
+The Agent Runtime is your **orchestration layer** that:
+
+1. **Receives and validates user requests** - Handles authentication and authorization
+2. **Calls LLM APIs** (OpenAI, Anthropic, etc.) - Sends prompts and receives reasoning
+3. **Parses LLM responses** - Extracts tool calls and validates parameters
+4. **Routes tool executions** - Delegates to appropriate sandboxes via the Tool Router
+5. **Manages session state** - Maintains conversation context across multiple turns
+6. **Aggregates results** - Combines outputs from multiple tool calls
+7. **Enforces business logic** - Rate limits, quotas, policy checks
+
+**Key Insight:** The runtime is **your code** - version-controlled, reviewed, and deployed like any other application. It doesn't execute user-provided code or LLM-generated scripts. It only makes API calls and routing decisions.
+
+#### What Gets Sandboxed (Untrusted Operations)
+
+Tool executions are sandboxed because they:
+
+- **Execute based on LLM output** (unpredictable and potentially malicious)
+- **Handle external/user data** (untrusted inputs that could contain injections)
+- **Perform system-level operations** (file I/O, network calls, process spawning)
+- **Access sensitive resources** (databases, APIs, file systems)
+- **May run generated code** (for code interpreter agents)
+
+#### The Threat Model
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ ATTACK VECTORS                                          │
+├─────────────────────────────────────────────────────────┤
+│ 1. Prompt Injection → LLM generates malicious tool call │
+│ 2. Compromised API → Returns poisoned data to tool      │
+│ 3. LLM Hallucination → Invalid/dangerous parameters     │
+│ 4. User Input Attack → SQL injection, path traversal    │
+└─────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────┐
+│ DEFENSE IN DEPTH                                        │
+├─────────────────────────────────────────────────────────┤
+│ Runtime (Trusted)  → Validates schemas, enforces limits │
+│ Router (Trusted)   → Routes to appropriate sandbox      │
+│ Sandbox (Untrust)  → Executes with minimal privileges   │
+│ Governance (Infra) → Records everything, immutably      │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### Performance Implications
+
+Keeping the runtime outside sandboxes is critical for performance:
+
+| Scenario | Runtime Outside | Runtime Inside |
+|:---------|:----------------|:---------------|
+| **Agent processes 10 tool calls** | ~500ms total | ~20-50s total |
+| **Session state access** | In-memory (instant) | Requires persistent volume (slow) |
+| **Concurrent users** | 1 shared runtime | N containerized runtimes |
+| **Cost (1000 requests/day)** | ~$5-10 | ~$50-100 |
+
+**Critical for voice-native agents:** Voice agents require <200ms response time. Container startup overhead (2-5s) destroys the conversational experience.
+
+#### When the Runtime MUST Be Sandboxed
+
+If your runtime performs **any** of these operations, it must be sandboxed:
+
+- ✅ **Executes LLM-generated Python/JavaScript code** (code interpreter agents)
+- ✅ **Runs user-uploaded plugins or configurations**
+- ✅ **Allows dynamic code loading** (eval, exec, require from user input)
+- ✅ **Multi-tenant SaaS** where customers bring their own agent code
+
+For these cases, use a **nested sandbox architecture**:
+```
+Host (Trusted) → Runtime Container (Untrusted) → Tool Sandboxes (Maximum Isolation)
+```
+
+Examples: OpenAI Code Interpreter, Jupyter-based agents, agent marketplaces.
+
+---
+
+## 1. Deep Technical Trade-offs: The "Blast Radius" vs. Latency
 
 Choosing a sandbox isn't just about speed; it's about where the **Security Boundary** lies in the stack.
 
@@ -266,7 +351,28 @@ Use this decision tree to route agent operations to the appropriate sandbox:
 
 ---
 
-## 7. References & Further Reading
+## 7. SEO Keywords & Positioning
+
+**Primary Keywords:**
+- eBPF AI Monitoring
+- Agentic Governance
+- Syscall Filtering for LLMs
+- WASI Security Audit
+- Zero-Trust AI Execution
+
+**Secondary Keywords:**
+- AI Agent Sandboxing
+- Enterprise AI Security
+- Autonomous Agent Compliance
+- LLM Runtime Security
+- Unforgeable AI Audit Trails
+
+**SEO Snippet:**
+> "Traditional logging fails for autonomous agents. Enterprise-grade AI governance requires eBPF kernel tracing and WASM capability-based security to ensure unforgeable audit trails. Learn how to implement infrastructure-layer monitoring for AI agents that act, not just suggest."
+
+---
+
+## 8. References & Further Reading
 
 ### Technical Documentation
 - [eBPF Documentation](https://ebpf.io/what-is-ebpf/)
@@ -288,7 +394,7 @@ Use this decision tree to route agent operations to the appropriate sandbox:
 
 ---
 
-## 8. Conclusion
+## 9. Conclusion
 
 The evolution from "AI that suggests" to "AI that acts" represents a fundamental shift in how we must approach governance and security. Traditional application-layer logging is insufficient when the application itself may be compromised.
 
