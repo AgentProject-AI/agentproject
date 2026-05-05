@@ -12,6 +12,8 @@ Top 10 AI Agent Security and Governance Controls (OWASP style list)
 
 ### 5. Observability, audit trails and explainability
 
+[<mark style="background-color:yellow;">**[How to explain Accuracy vs Explainability to CTOs and CIOs</mark>](/security/security/AI-models-accuracy-vs-explainability.png)** :thumbsup:
+
 ### 6. Policy-as-code, escalation rules and HITL frameworks
 
 ### 7. Secure supply chain & model integrity
