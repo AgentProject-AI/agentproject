@@ -9,3 +9,5 @@ This is written by a community of practitioners
 Rajesh W. (Amazon Bedrock)
 
 Bobur U (Microsoft MVP)
+[Patrick Jordan] (https://www.linkedin.com/in/patrick-jordan-79a889120/) (Cybersecurity GRC Analyst)
+
