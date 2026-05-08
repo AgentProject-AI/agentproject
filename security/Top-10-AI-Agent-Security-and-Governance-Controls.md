@@ -1,10 +1,14 @@
 
 
 ---
-Top 10 AI Agent Security and Governance Controls (OWASP style list)
+Top 10 AI Agent Security and Governance Controls (Based on OWASP )
 ---
 
-### 1. Agent Discovery & inventory (continuous)
+### ASI01. Agent Goal Hijack
+#### Runtime enforcement & guardian agents
+#### Observability, audit trails & explainability
+#### Policy-as-code, escalation rules & HITL frameworks
+#### Continuous security testing & adversarial evaluation
 
 ### 2. Treat agents as first-class identities (Traditional IAM will not work, least privilege, JIT)
 
