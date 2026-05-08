@@ -23,7 +23,15 @@ ___
 #### Scoped data access & information governance
 #### Policy-as-code, escalation rules & HITL frameworks
 
-### 4. Runtime enforcement & guardian agents
+___
+
+### ASI04: Agentic Supply Chain Vulnerabilities
+#### Secure supply chain & model integrity
+#### Continuous security testing & adversarial evaluation
+
+---
+
+4. Runtime enforcement & guardian agents
 
 ### 5. Observability, audit trails and explainability
 
