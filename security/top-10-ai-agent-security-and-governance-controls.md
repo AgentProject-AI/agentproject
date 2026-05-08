@@ -8,9 +8,20 @@ Top 10 AI Agent Security and Governance Controls (Based on OWASP )
 #### Policy-as-code, escalation rules & HITL frameworks
 #### Continuous security testing & adversarial evaluation
 
-### 2. Treat agents as first-class identities (Traditional IAM will not work, least privilege, JIT)
+___
 
-### 3. Scoped data access & information governance
+### ASI02. Tool Misuse & Exploitation
+#### Runtime enforcement & guardian agents
+#### Ephemeral execution & environment isolation (sandboxing)
+#### Continuous security testing & adversarial execution
+
+---
+
+### ASI03. Identity & Privilege Abuse
+#### Agent discovery & inventory (continuous)
+#### Treat agents as first-class identities (Traditional IAM will not work, least privilege, JIT)
+#### Scoped data access & information governance
+#### Policy-as-code, escalation rules & HITL frameworks
 
 ### 4. Runtime enforcement & guardian agents
 
