@@ -52,18 +52,23 @@ ___
 
 ___
 
-### ASI07: Cascading Failures
+### ASI08: Cascading Failures
 #### Runtime enforcement & guardian agents
 #### Observerability & audit trails
 
 ___
 
-### 6. Policy-as-code, escalation rules and HITL frameworks
+### ASI09: Human-agent trust exploitation
+####  Scoped data access & information governance
+####  Policy-as-code, escalation rules & HITL frameworks
+####  FinOps, metering & governance for cost-risk transparency
 
-### 7. Secure supply chain & model integrity
+---
 
-### 8. Ephemeral execution & environment isolation 
-
-### 9. Continuous security testing & adversarial evaluation
+### ASI10: Rogue Agents
+#### Agent discovery & inventory (continuous)
+#### Treat agents as first-class identities (privilege boundaries)
+#### Runtime enforcement & guardian agents
+#### Ephemeral execution & environment isolation
 
 ### 10. FinOps, metering and governance for cost & risk
