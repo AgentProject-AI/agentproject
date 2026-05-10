@@ -7,5 +7,8 @@ branding:
 links:
 - text: Agent Frameworks
   link: /agentproject/1-foundation-of-agent-projects/
+links:
+- text :Securing Agents in production 
+  link: /agentproject/#part-2-securing-your-agent-project-in-production
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."
