@@ -5,6 +5,7 @@
 - [Welcome to the Agent Project](https://agentproject-ai.github.io/agentproject/readme.md): Welcome to the Agent Project
 - [1. Foundation of Agent Projects](https://agentproject-ai.github.io/agentproject/foundation-of-agent-projects/readme.md): Different Agent Workflow Patterns
 - [Top 10 AI Agent Security and Governance Controls (Based on OWASP)](https://agentproject-ai.github.io/agentproject/security/readme.md): [AI Agent Sandboxing and Isolation 👍
+- [Top 10 AI Agent Security and Governance Controls (Based on OWASP)](https://agentproject-ai.github.io/agentproject/security/readme.md): [AI Agent Sandboxing and Isolation 👍
 - [Authors](https://agentproject-ai.github.io/agentproject/authors.md): This is written by a community of practitioners
 
 ## Foundation of Agent Projects
