@@ -5,9 +5,9 @@ branding:
   title: Agent Project
   label: Docs
 links:
-- text: Agent Frameworks
-  link: /1-foundation-of-agent-projects/
-- text: Security & Governance
+- text: Foundation of Agent Projects
+  link: /Foundation-of-agent-projects/
+- text: Securing AI Agents in production
   link: /security/
 - text: Authors
   link: /authors/

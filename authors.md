@@ -1,3 +1,9 @@
+---
+icon: people
+order: 500
+label: Authors
+---
+
 # Authors
 
 This is written by a community of practitioners
