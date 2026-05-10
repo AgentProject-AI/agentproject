@@ -4,9 +4,9 @@ icon: hand-wave
 
 # Welcome to the Agent Project
 
-A practical guide written by practitioners to help get your Agents running, scaling, and operating in production.
+A practical guide written by practitioners to help get your Agents running securely in production.
 
-Given the many confusing options, [<mark style="background-color:yellow;">https://www.AgentProject.ai</mark>](https://www.agentproject.ai) aims to guide you through the choices, tools, and best practices to ensure your Agent project starts and runs in production.
+Given the many confusing options, [<mark style="background-color:yellow;">https://www.AgentProject.ai</mark>](https://www.agentproject.ai) aims to guide you through the choices, tools, and best practices to ensure your Agent project runs securely in production.
 
 The github repo is here : [https://github.com/AgentProject-AI/agentproject](https://github.com/AgentProject-AI/agentproject)
 
@@ -34,35 +34,9 @@ The github repo is here : [https://github.com/AgentProject-AI/agentproject](http
   * **Testing Complexity**: Adapting testing methodologies for non-deterministic Agentic systems.
   * **Agent Observability**: Addressing the complexities of evaluating AI agent performance.
 
-### Part 2: Building Your Agent Project
 
-* **Choosing the Right Agentic Framework:**
-  * A Scorecard for Agent Frameworks](topics/agent-framework-scorecard-explained.md) 
-  * **Comparative analysis of AutoGen, CrewAI, LangGraph**:.
-    * [Agent Framework Analysis of Microsoft Autogen](topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen.md)
-* Selecting the appropriate framework based on project requirements.
-* **Designing the Agent Architecture:**
-  * Defining agent roles and responsibilities.
-  * Designing conversation flows and task allocation strategies.
-  * Implementing tools and integrating external data sources.
-  * Strategies for creating modular, reusable agent components.
-* **Implementing Key Agent Capabilities:**
-  * **Tool Use**: Integrating web browsers, search engines, and APIs.
-  * **Memory Management:** Storing and retrieving information across interactions.
-  * **Planning and Reasoning**: Implementing strategies for complex tasks.
-  * **Context Management:** Handling long-form content and maintaining context.
-* **Prompt Engineering for Agents:**
-  * Creating effective prompts for different agent tasks.
-  * Techniques for improving prompt reliability and consistency.
-  * One-shot prompts.
-  * Managing prompt complexity and versioning.
-* **Agentic Retrieval Augmented Generation (RAG)**
-  * How RAG enhances agent performance by incorporating external knowledge.
-  * Context selection and indexing strategies.
-  * Vector stores and chunking methods.
-  * Implementing Reasoning RAG to rectify information.
 
-### Part 3: Your Agent Project in Production
+### Part 2: Securing Your Agent Project in Production
 * [<mark style="background-color:yellow;">**[Top 10 AI Agent Security and Governance Controls (OWASP Style)</mark>](security/Top-10-AI-Agent-Security-and-Governance-Controls.md)** :thumbsup:
 * **Deployment Strategies:**
   * Considerations for deploying agent applications.
@@ -104,17 +78,4 @@ The github repo is here : [https://github.com/AgentProject-AI/agentproject](http
   * Using data and feedback to refine and optimize agent behavior.
   * Integrating evaluation into the development cycle.
 
-### Part 4: Advanced Topics and Future Directions
 
-* **Advanced Agent Architectures:**
-  * Exploring multi-agent systems and complex interaction patterns.
-  * Implementing adaptive and self-improving agent systems.
-  * Techniques for building more robust and resilient agents.
-* **The Role of Human-in-the-Loop Systems:**
-  * Integrating human feedback and oversight into agent workflows.
-  * Designing effective human-machine collaboration patterns.
-  * Balancing automation with human control.
-* **The Future of Agent AI:**
-  * Emerging trends and technologies in agent AI.
-  * The potential impact of AI agents on society and the economy.
-  * Ethical considerations and responsible development of AI agents.
