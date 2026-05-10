@@ -1,4 +1,7 @@
 ---
+icon: table
+order: 390
+label: Framework Scorecard
 description: This is the scorecard framework explanation.
 ---
 

@@ -1,3 +1,9 @@
+---
+icon: list
+order: 400
+label: Agent Frameworks List
+---
+
 # Exhaustive list of Agent Frameworks
 
 ### AG2

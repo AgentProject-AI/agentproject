@@ -1,3 +1,11 @@
+---
+icon: server
+order: 380
+label: Hosting Providers
+---
+
+# Agent Hosting Providers
+
 https://fireworks.ai/
 https://wandb.ai/site
 https://lightning.ai/
