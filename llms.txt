@@ -3,11 +3,9 @@
 > A practical guide written by practitioners to help get your Agents running securely in production.
 
 - [Welcome to the Agent Project](https://agentproject-ai.github.io/agentproject/readme.md): Welcome to the Agent Project
-- [1. Foundation of Agent Projects](https://agentproject-ai.github.io/agentproject/1-foundation-of-agent-projects/readme.md): Different Agent Workflow Patterns
+- [Top 10 AI Agent Security and Governance Controls (Based on OWASP)](https://agentproject-ai.github.io/agentproject/security/readme.md): [AI Agent Sandboxing and Isolation 👍
 - [Authors](https://agentproject-ai.github.io/agentproject/authors.md): This is written by a community of practitioners
 
-## 1. Foundation of Agent Projects
+## Security & Governance
 
-- [The key functional areas of an AI agent](https://agentproject-ai.github.io/agentproject/1-foundation-of-agent-projects/the-key-functional-areas-of-an-ai-agent.md): Functional areas of an AI Agent
-- [Different Agent Workflow Implementation Patterns](https://agentproject-ai.github.io/agentproject/1-foundation-of-agent-projects/different-agent-workflow-patterns.md): Different flavors of Agents workflows
-- [How to use Outcome, Role and Interaction (ORI) to design AI Agents for your organization](https://agentproject-ai.github.io/agentproject/1-foundation-of-agent-projects/how-to-use-outcome-role-and-interaction-ori-to-design-ai-agents-for-your-organization.md): In the rapidly evolving landscape of artificial intelligence, designing effective agent workflow systems requires a structured methodology that balances complexity with predictability.
+- [AI Agent Sandboxing: Containers vs WASM vs Kernel-Level Isolation](https://agentproject-ai.github.io/agentproject/security/ai_agent_sandboxing_containers_vs_wasm_vs_kernel-level_isolation.md): The shift from "AI that suggests" to "AI that acts" requires moving monitoring from the application layer to the infrastructure layer. If an agent is compromised, its own logs cannot be trusted for governance.
