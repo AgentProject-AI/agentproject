@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agentproject-ai.github.io/agentproject/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
   </url>
   <url>
     <loc>https://agentproject-ai.github.io/agentproject/foundation-of-agent-projects/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
   </url>
   <url>
     <loc>https://agentproject-ai.github.io/agentproject/security/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
   </url>
   <url>
     <loc>https://agentproject-ai.github.io/agentproject/foundation-of-agent-projects/different-agent-workflow-patterns/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
   </url>
   <url>
     <loc>https://agentproject-ai.github.io/agentproject/authors/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
   </url>
   <url>
     <loc>https://agentproject-ai.github.io/agentproject/foundation-of-agent-projects/the-key-functional-areas-of-an-ai-agent/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
-  </url>
-  <url>
-    <loc>https://agentproject-ai.github.io/agentproject/foundation-of-agent-projects/how-to-use-outcome-role-and-interaction-ori-to-design-ai-agents-for-your-organization/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
   </url>
   <url>
     <loc>https://agentproject-ai.github.io/agentproject/security/top-10-ai-agent-security-and-governance-controls/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
+  </url>
+  <url>
+    <loc>https://agentproject-ai.github.io/agentproject/foundation-of-agent-projects/how-to-use-outcome-role-and-interaction-ori-to-design-ai-agents-for-your-organization/</loc>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
   </url>
   <url>
     <loc>https://agentproject-ai.github.io/agentproject/security/ai_agent_sandboxing_containers_vs_wasm_vs_kernel-level_isolation/</loc>
-    <lastmod>2026-05-10T10:22:30Z</lastmod>
+    <lastmod>2026-05-10T10:26:42Z</lastmod>
   </url>
 </urlset>
