@@ -12,9 +12,6 @@ links:
 - text: Authors
   link: /authors/
 exclude:
-- topics/
-- exhaustive-list-of-agent-frameworks.md
-- hosting-providers.md
 - SUMMARY.md
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."
