@@ -6,9 +6,15 @@ branding:
   label: Docs
 links:
 - text: Agent Frameworks
-  link: /agentproject/1-foundation-of-agent-projects/
-links:
-- text :Securing Agents in production 
-  link: /agentproject/#part-2-securing-your-agent-project-in-production
+  link: /1-foundation-of-agent-projects/
+- text: Security & Governance
+  link: /security/
+- text: Authors
+  link: /authors/
+exclude:
+- topics/
+- exhaustive-list-of-agent-frameworks.md
+- hosting-providers.md
+- SUMMARY.md
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."

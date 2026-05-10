@@ -1,8 +1,10 @@
-
-
 ---
-Top 10 AI Agent Security and Governance Controls (Based on OWASP )
+icon: shield-lock
+order: 1000
+label: Security & Governance
 ---
+
+# Top 10 AI Agent Security and Governance Controls (Based on OWASP)
 
 ### ASI01. Agent Goal Hijack
 #### Runtime enforcement & guardian agents

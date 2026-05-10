@@ -1,3 +1,10 @@
+---
+icon: container
+order: 800
+label: Agent Sandboxing Guide
+---
+
+# AI Agent Sandboxing: Containers vs WASM vs Kernel-Level Isolation
 
 ## Executive Summary
 
