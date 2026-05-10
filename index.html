@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/agentproject">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831734612762">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831734796392">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Welcome to the Agent Project</title>
     <meta name="title" content="Welcome to the Agent Project">
-    <meta name="description" content="A practical guide written by practitioners to help get your Agents running, scaling, and operating in production.">
+    <meta name="description" content="A practical guide written by practitioners to help get your Agents running securely in production.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://agentproject-ai.github.io/agentproject/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://agentproject-ai.github.io/agentproject/">
     <meta property="og:title" content="Welcome to the Agent Project">
-    <meta property="og:description" content="A practical guide written by practitioners to help get your Agents running, scaling, and operating in production.">
+    <meta property="og:description" content="A practical guide written by practitioners to help get your Agents running securely in production.">
     <meta property="og:site_name" content="Agent Project">
     <meta property="og:locale" content="en_US">
 
@@ -31,18 +31,18 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://agentproject-ai.github.io/agentproject/">
     <meta name="twitter:title" content="Welcome to the Agent Project">
-    <meta name="twitter:description" content="A practical guide written by practitioners to help get your Agents running, scaling, and operating in production.">
+    <meta name="twitter:description" content="A practical guide written by practitioners to help get your Agents running securely in production.">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://agentproject-ai.github.io/agentproject/readme.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="resources/css/retype.css?v=4.5.3.831734612762" rel="stylesheet">
+    <link href="resources/css/retype.css?v=4.5.3.831734796392" rel="stylesheet">
 
-    <script data-cfasync="false" src="resources/js/config.js?v=4.5.3.831734612762" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="resources/js/config.js?v=4.5.3.831734796392" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="resources/js/lunr.js?v=4.5.3.831734612762" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="resources/js/lunr.js?v=4.5.3.831734796392" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -149,8 +149,8 @@
 
                 <!-- Page content  -->
 <h1 id="welcome-to-the-agent-project">Welcome to the Agent Project</h1>
-<p>A practical guide written by practitioners to help get your Agents running, scaling, and operating in production.</p>
-<p>Given the many confusing options, <a href="https://www.agentproject.ai"><mark style="background-color:yellow;">https://www.AgentProject.ai</mark></a> aims to guide you through the choices, tools, and best practices to ensure your Agent project starts and runs in production.</p>
+<p>A practical guide written by practitioners to help get your Agents running securely in production.</p>
+<p>Given the many confusing options, <a href="https://www.agentproject.ai"><mark style="background-color:yellow;">https://www.AgentProject.ai</mark></a> aims to guide you through the choices, tools, and best practices to ensure your Agent project runs securely in production.</p>
 <p>The github repo is here : <a href="https://github.com/AgentProject-AI/agentproject">https://github.com/AgentProject-AI/agentproject</a></p>
 <h3 id="topics-covered-here">Topics covered here</h3>
 <p>(Please note that these are work-in-progress topics and will be filled out as we get experienced folks helping us out). The team is currently focused on building this out
@@ -183,53 +183,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="part-2-building-your-agent-project">Part 2: Building Your Agent Project</h3>
-<ul>
-<li><strong>Choosing the Right Agentic Framework:</strong>
-<ul>
-<li>A Scorecard for Agent Frameworks](topics/agent-framework-scorecard-explained.md)</li>
-<li><strong>Comparative analysis of AutoGen, CrewAI, LangGraph</strong>:.
-<ul>
-<li><a href="topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen/">Agent Framework Analysis of Microsoft Autogen</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Selecting the appropriate framework based on project requirements.</li>
-<li><strong>Designing the Agent Architecture:</strong>
-<ul>
-<li>Defining agent roles and responsibilities.</li>
-<li>Designing conversation flows and task allocation strategies.</li>
-<li>Implementing tools and integrating external data sources.</li>
-<li>Strategies for creating modular, reusable agent components.</li>
-</ul>
-</li>
-<li><strong>Implementing Key Agent Capabilities:</strong>
-<ul>
-<li><strong>Tool Use</strong>: Integrating web browsers, search engines, and APIs.</li>
-<li><strong>Memory Management:</strong> Storing and retrieving information across interactions.</li>
-<li><strong>Planning and Reasoning</strong>: Implementing strategies for complex tasks.</li>
-<li><strong>Context Management:</strong> Handling long-form content and maintaining context.</li>
-</ul>
-</li>
-<li><strong>Prompt Engineering for Agents:</strong>
-<ul>
-<li>Creating effective prompts for different agent tasks.</li>
-<li>Techniques for improving prompt reliability and consistency.</li>
-<li>One-shot prompts.</li>
-<li>Managing prompt complexity and versioning.</li>
-</ul>
-</li>
-<li><strong>Agentic Retrieval Augmented Generation (RAG)</strong>
-<ul>
-<li>How RAG enhances agent performance by incorporating external knowledge.</li>
-<li>Context selection and indexing strategies.</li>
-<li>Vector stores and chunking methods.</li>
-<li>Implementing Reasoning RAG to rectify information.</li>
-</ul>
-</li>
-</ul>
-<h3 id="part-3-your-agent-project-in-production">Part 3: Your Agent Project in Production</h3>
+<h3 id="part-2-securing-your-agent-project-in-production">Part 2: Securing Your Agent Project in Production</h3>
 <ul>
 <li>[<mark style="background-color:yellow;"><strong><a href="security/top-10-ai-agent-security-and-governance-controls/">Top 10 AI Agent Security and Governance Controls (OWASP Style)</mark></a></strong> <span class="docs-emoji">&#x1F44D;</span></li>
 <li><strong>Deployment Strategies:</strong>
@@ -290,30 +244,6 @@
 <li>The importance of continuous monitoring and improvement of agent applications.</li>
 <li>Using data and feedback to refine and optimize agent behavior.</li>
 <li>Integrating evaluation into the development cycle.</li>
-</ul>
-</li>
-</ul>
-<h3 id="part-4-advanced-topics-and-future-directions">Part 4: Advanced Topics and Future Directions</h3>
-<ul>
-<li><strong>Advanced Agent Architectures:</strong>
-<ul>
-<li>Exploring multi-agent systems and complex interaction patterns.</li>
-<li>Implementing adaptive and self-improving agent systems.</li>
-<li>Techniques for building more robust and resilient agents.</li>
-</ul>
-</li>
-<li><strong>The Role of Human-in-the-Loop Systems:</strong>
-<ul>
-<li>Integrating human feedback and oversight into agent workflows.</li>
-<li>Designing effective human-machine collaboration patterns.</li>
-<li>Balancing automation with human control.</li>
-</ul>
-</li>
-<li><strong>The Future of Agent AI:</strong>
-<ul>
-<li>Emerging trends and technologies in agent AI.</li>
-<li>The potential impact of AI agents on society and the economy.</li>
-<li>Ethical considerations and responsible development of AI agents.</li>
 </ul>
 </li>
 </ul>

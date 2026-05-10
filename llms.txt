@@ -1,6 +1,6 @@
 ﻿# Welcome to the Agent Project
 
-> A practical guide written by practitioners to help get your Agents running, scaling, and operating in production.
+> A practical guide written by practitioners to help get your Agents running securely in production.
 
 - [Welcome to the Agent Project](https://agentproject-ai.github.io/agentproject/readme.md): Welcome to the Agent Project
 - [Exhaustive list of Agent Frameworks](https://agentproject-ai.github.io/agentproject/exhaustive-list-of-agent-frameworks.md): Description: Framework for orchestrating, optimizing, and automating LLM workflows with multi-agent systems.
