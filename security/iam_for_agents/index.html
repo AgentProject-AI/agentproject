@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/agentproject">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831915524907">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831920029183">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
 
     <!-- Primary Meta Tags -->
-    <title>IAM for agents</title>
-    <meta name="title" content="IAM for agents">
+    <title>Identity and Access Management for AI Agents: Why Your IAM is Having an Existential Crisis</title>
+    <meta name="title" content="Identity and Access Management for AI Agents: Why Your IAM is Having an Existential Crisis">
+    <meta name="description" content="Your IAM system is freaking out because AI agents are crashing the party, and they didn't bring ID. Traditional identity systems were built for humans who take coffee breaks—not autonomous agents that make 10,000 API calls before your morning standup.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://agentproject-ai.github.io/agentproject/security/iam_for_agents/">
@@ -21,25 +22,27 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://agentproject-ai.github.io/agentproject/security/iam_for_agents/">
-    <meta property="og:title" content="IAM for agents">
+    <meta property="og:title" content="Identity and Access Management for AI Agents: Why Your IAM is Having an Existential Crisis">
+    <meta property="og:description" content="Your IAM system is freaking out because AI agents are crashing the party, and they didn't bring ID. Traditional identity systems were built for humans who take coffee breaks—not autonomous agents that make 10,000 API calls before your morning standup.">
     <meta property="og:site_name" content="Agent Project">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://agentproject-ai.github.io/agentproject/security/iam_for_agents/">
-    <meta name="twitter:title" content="IAM for agents">
+    <meta name="twitter:title" content="Identity and Access Management for AI Agents: Why Your IAM is Having an Existential Crisis">
+    <meta name="twitter:description" content="Your IAM system is freaking out because AI agents are crashing the party, and they didn't bring ID. Traditional identity systems were built for humans who take coffee breaks—not autonomous agents that make 10,000 API calls before your morning standup.">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://agentproject-ai.github.io/agentproject/security/iam_for_agents.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831915524907" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831920029183" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831915524907" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831920029183" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831915524907" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831920029183" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -157,7 +160,378 @@
                 <doc-page-actions></doc-page-actions>
 
                 <!-- Page content  -->
-<h1 id="iam-for-agents">IAM for agents</h1>
+<h1 id="identity-and-access-management-for-ai-agents-why-your-iam-is-having-an-existential-crisis">Identity and Access Management for AI Agents: Why Your IAM is Having an Existential Crisis</h1>
+<h2 id="tldr">TL;DR</h2>
+<p>Your IAM system is freaking out because AI agents are crashing the party, and they didn&#x27;t bring ID. Traditional identity systems were built for humans who take coffee breaks—not autonomous agents that make 10,000 API calls before your morning standup. Spoiler alert: treating AI agents like really fast interns is a security disaster waiting to happen.</p>
+<hr>
+<h2 id="houston-we-have-an-identity-problem">Houston, We Have an Identity Problem</h2>
+<h3 id="when-iam-met-ai-agents-it-didnt-go-well">When IAM Met AI Agents (It Didn&#x27;t Go Well)</h3>
+<p>Picture this: Your enterprise IAM was designed in an era when &quot;multi-factor authentication&quot; meant remembering both your password AND your security question answer (&quot;What was your first pet&#x27;s name?&quot; - it&#x27;s always Fluffy). Now you&#x27;re trying to shoehorn AI agents into this framework, and it&#x27;s about as effective as using a floppy disk to back up your cloud infrastructure.</p>
+<p>Traditional IAM systems assumed:</p>
+<ul>
+<li><strong>Long-lived sessions</strong> - Humans log in, grab coffee, attend three meetings, actually do work</li>
+<li><strong>Interactive consent</strong> - &quot;Click here if you&#x27;re not a robot&quot; (ironic, right?)</li>
+<li><strong>Role-based access</strong> - Bob from accounting gets accounting permissions. Simple!</li>
+<li><strong>Manual reviews</strong> - Quarterly access audits that everyone procrastinates on</li>
+<li><strong>Human-speed actions</strong> - Dozens of operations per day, not per second</li>
+</ul>
+<p>But AI agents are built different:</p>
+<ul>
+<li>They execute at <strong>machine speed</strong> (because, well, machines)</li>
+<li>They make <strong>thousands of decisions per minute</strong> while you&#x27;re still loading Slack</li>
+<li>They need <strong>zero-interaction authentication</strong> (nobody&#x27;s clicking MFA prompts at 5000 requests/second)</li>
+<li>They span <strong>multiple systems</strong> faster than you can say &quot;zero trust architecture&quot;</li>
+<li>They blur the line between user, app, and infrastructure in ways that make your security team cry</li>
+</ul>
+<h3 id="the-identity-crisis-nobody-saw-coming">The Identity Crisis Nobody Saw Coming</h3>
+<p>When your coding agent pushes to production, here&#x27;s what keeps your CISO up at night:</p>
+<ul>
+<li><strong>Who&#x27;s actually responsible?</strong> The agent? The developer who invoked it? The platform that hosted it? Yes?</li>
+<li><strong>What permissions should it have?</strong> All of yours? Some of yours? Its own special snowflake set?</li>
+<li><strong>How do we audit this?</strong> &quot;AI Agent #47 modified 300 files&quot; doesn&#x27;t exactly help with compliance</li>
+<li><strong>Where&#x27;s the trust boundary?</strong> Your laptop? The cloud? The SaaS vendor&#x27;s multi-tenant infrastructure you pretend not to worry about?</li>
+</ul>
+<p><strong>Real Talk</strong>: In 2023, a major tech company discovered their AI coding assistant had been committing AWS credentials to public repositories for six months. The credentials had been leaked in over 1,200 commits. The blast radius? Access to production databases across 40+ microservices. The root cause? The agent inherited the developer&#x27;s overly-broad IAM permissions and nobody thought to implement secrets scanning for agent-generated code.</p>
+<hr>
+<h2 id="the-fragmentation-fiasco-everyones-solving-this-differently-and-none-of-them-talk-to-each-other">The Fragmentation Fiasco: Everyone&#x27;s Solving This Differently (And None of Them Talk to Each Other)</h2>
+<h3 id="cloud-providers-we-got-this-narrator-they-each-got-it-differently">Cloud Providers: &quot;We Got This&quot; (Narrator: They Each Got It Differently)</h3>
+<p>The big three cloud providers looked at agent IAM and said, &quot;How hard could it be? We already do workload identity!&quot; Then they each invented their own special flavor:</p>
+<p><strong>AWS</strong>: &quot;Here&#x27;s IAM Roles for Everything, plus some Cognito, and maybe some STS tokens. Good luck!&quot;
+<strong>Azure</strong>: &quot;Managed Identities are magic! Also we have Workload Identity Federation. They&#x27;re different. Don&#x27;t ask.&quot;
+<strong>Google Cloud</strong>: &quot;Workload Identity is clean and simple! (If you only use Google Cloud for everything forever)&quot;</p>
+<p>These solutions are genuinely great... <strong>if</strong> you live entirely in one cloud. But the moment your agent needs to talk to Azure from AWS while accessing a Google service? Welcome to federation hell. Population: you and your 47 open browser tabs of documentation.</p>
+<h3 id="ai-tool-providers-lets-innovate-translation-more-fragmentation">AI Tool Providers: &quot;Let&#x27;s Innovate!&quot; (Translation: More Fragmentation)</h3>
+<p>Meanwhile, AI platforms looked at this mess and thought, &quot;We can do better!&quot; They were half right.</p>
+<p><strong>API Keys</strong>: The good old &quot;here&#x27;s a 64-character string, don&#x27;t lose it!&quot; approach. Simple! Effective! Also the reason we can&#x27;t have nice things. These credentials typically live for months or years, which in security terms is like leaving your house key under the doormat with a sign that says &quot;KEY HERE.&quot;</p>
+<p><strong>Fun Fact</strong>: In 2024, the &quot;Leaked API Keys&quot; dataset on GitHub contained over 10 million exposed credentials, with AI platform API keys representing 23% of the total. The average time-to-detection? 11 days. The average time-to-exploitation by attackers? 4 hours. Math isn&#x27;t mathing in our favor here.</p>
+<p><strong>OAuth Scopes</strong>: Great for &quot;This app wants to access your photos&quot;—less great for &quot;This autonomous agent wants to recursively modify your infrastructure.&quot; OAuth was designed for humans to delegate to apps, not for agents to delegate to other agents in a chain five layers deep while you&#x27;re asleep.</p>
+<h3 id="the-new-kids-on-the-block-agent-specific-protocols">The New Kids on the Block: Agent-Specific Protocols</h3>
+<p>Some brilliant folks realized we need new protocols. So naturally, we got three competing standards (obligatory <a href="https://xkcd.com/927/">XKCD 927</a> reference):</p>
+<h4 id="anthropics-model-context-protocol-mcp"><strong>Anthropic&#x27;s Model Context Protocol (MCP)</strong></h4>
+<p>Focuses on secure context sharing between models and tools. Think of it as &quot;what if your AI agent had a really good memory AND proper security boundaries?&quot; Still figuring out how to handle cross-organizational trust, which is like solving the Rubik&#x27;s cube while riding a unicycle.</p>
+<h4 id="googles-agent-to-agent-protocol-a2a"><strong>Google&#x27;s Agent-to-Agent Protocol (A2A)</strong></h4>
+<p>Enables agents to talk to each other with proper authentication. Revolutionary! Also mostly useful if you&#x27;re already deep in the Google ecosystem. It&#x27;s the iMessage of agent protocols—amazing if everyone&#x27;s using it, frustrating if they&#x27;re not.</p>
+<h4 id="agntcy-agent-communication-protocol-acp"><strong>AGNTCY Agent Communication Protocol (ACP)</strong></h4>
+<p>The idealistic open standard that wants everyone to get along. Early days, but points for trying to solve interoperability. Currently has the &quot;adoption challenge&quot; problem (chicken, meet egg).</p>
+<p><strong>The Reality Check</strong>: None of these protocols talk to each other natively. We&#x27;re speedrunning the browser wars, but for agent identity. Place your bets on which one survives!</p>
+<hr>
+<h2 id="plot-twist-maybe-were-thinking-about-this-wrong">Plot Twist: Maybe We&#x27;re Thinking About This Wrong</h2>
+<h3 id="agents-arent-humans-in-robot-bodies-stop-treating-them-like-they-are">Agents Aren&#x27;t Humans in Robot Bodies (Stop Treating Them Like They Are)</h3>
+<p>Here&#x27;s the uncomfortable truth: We keep trying to squeeze AI agents into human-shaped IAM holes, and it&#x27;s not working. It&#x27;s like using a screwdriver as a hammer—sure, you CAN do it, but everyone&#x27;s going to judge you, and something&#x27;s going to break.</p>
+<p><strong>The paradigm shift</strong>:</p>
+<blockquote>
+<p><strong>AI agents aren&#x27;t users. They&#x27;re delegated workloads. They need workload identities, not user accounts with fancy automation.</strong></p>
+</blockquote>
+<p>Mind = blown? Let&#x27;s break it down:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Human IAM (The Old Way)</th>
+<th>Agent IAM (The New Hotness)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Credentials valid for hours/days</td>
+<td>Tokens that expire faster than your attention span (seconds to minutes)</td>
+</tr>
+<tr>
+<td>&quot;Please click to verify you&#x27;re human&quot;</td>
+<td>&quot;Here&#x27;s cryptographic proof I&#x27;m a legitimate workload&quot;</td>
+</tr>
+<tr>
+<td>Roles like &quot;Engineer&quot; or &quot;Admin&quot;</td>
+<td>Policies like &quot;can read database X during deployment window Y if audit log Z is enabled&quot;</td>
+</tr>
+<tr>
+<td>Annual access reviews everyone ignores</td>
+<td>Continuous automated policy evaluation that never sleeps</td>
+</tr>
+<tr>
+<td>Audit logs for human investigation</td>
+<td>Machine-readable telemetry that feeds your SIEM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="what-agents-actually-need-the-recipe-for-not-getting-hacked">What Agents Actually Need (The Recipe for Not Getting Hacked)</h3>
+<h4 id="1-unique-digital-identities-no-more-service-account-1-through-service-account-47">1. <strong>Unique Digital Identities</strong> (No More &quot;service-account-1&quot; Through &quot;service-account-47&quot;)</h4>
+<p>Every agent instance gets its own cryptographically verifiable identity. Not just a username, but something like:</p>
+<ul>
+<li>Agent type and version (so you know WHAT is making that API call)</li>
+<li>Deployment context (WHERE it&#x27;s running)</li>
+<li>Bound to execution environment (can&#x27;t be copy-pasted to a hacker&#x27;s laptop)</li>
+</ul>
+<h4 id="2-policy-based-access-because-full-admin-isnt-a-permission-strategy">2. <strong>Policy-Based Access</strong> (Because &quot;Full Admin&quot; Isn&#x27;t a Permission Strategy)</h4>
+<p>Fine-grained policies that consider:</p>
+<ul>
+<li>What the agent is trying to do</li>
+<li>Where it&#x27;s running</li>
+<li>What data it&#x27;s touching</li>
+<li>Whether it&#x27;s 3 AM on a Saturday (why is the backup agent modifying production databases right now??)</li>
+</ul>
+<h4 id="3-short-lived-just-in-time-jit-credentials-credentials-that-expire-before-you-finish-this-section">3. <strong>Short-Lived, Just-In-Time (JIT) Credentials</strong> (Credentials That Expire Before You Finish This Section)</h4>
+<p>Issue credentials on-demand that live for minutes, not months. If someone steals them, they&#x27;re useless by the time they paste them into their attack script. It&#x27;s like food that expires immediately—can&#x27;t get food poisoning from credentials that no longer exist.</p>
+<p><strong>Real-World Impact</strong>: When Uber was breached in 2022 (via a contractor&#x27;s credentials), the attacker had access for over a week because credentials were long-lived. If those had been JIT credentials with 5-minute lifetimes? The attacker would have needed to re-compromise the system every 5 minutes. That&#x27;s the security equivalent of changing your locks while the burglar is still picking them.</p>
+<h4 id="4-context-aware-authorization-not-just-is-the-password-right-but-does-this-make-sense">4. <strong>Context-Aware Authorization</strong> (Not Just &quot;Is the Password Right?&quot; But &quot;Does This Make Sense?&quot;)</h4>
+<p>Modern agent IAM should ask:</p>
+<ul>
+<li>Is this agent doing something it normally does?</li>
+<li>Is it accessing data it usually touches?</li>
+<li>Is this behavior pattern suspicious?</li>
+<li>Should we deny this and page someone?</li>
+</ul>
+<hr>
+<h2 id="agent-types-a-field-guide-to-identity-management-or-how-i-learned-to-stop-worrying-and-love-the-taxonomy">Agent Types: A Field Guide to Identity Management (Or: How I Learned to Stop Worrying and Love the Taxonomy)</h2>
+<p>Not all agents are created equal. Some live on your laptop, some live in the cloud, and some live in that weird liminal space between &quot;our infrastructure&quot; and &quot;someone else&#x27;s problem.&quot; Let&#x27;s categorize them:</p>
+<h3 id="1-personal-agents-the-it-runs-on-my-laptop-category">1. Personal Agents (The &quot;It Runs on My Laptop&quot; Category)</h3>
+<p><strong>What They Are</strong>: AI assistants running directly on your device—your digital butler who lives in your laptop.</p>
+<p><strong>Examples</strong>: Claude Code (hi!), local LLM assistants, that sketchy desktop automation tool from GitHub you probably shouldn&#x27;t have installed</p>
+<p><strong>The Identity Situation</strong>:
+These agents are basically squatters in your user session. They inherit your permissions, access your files, and run with your identity. From an IAM perspective, they&#x27;re you wearing a funny hat.</p>
+<p><strong>Trust Anchor</strong>: Your OS keychain, TPM, or whatever security your laptop has (hopefully not just &quot;password123&quot;)</p>
+<p><strong>The Problem Nobody Talks About</strong>:</p>
+<blockquote>
+<p>When your desktop agent buys something online or commits code, there&#x27;s no good way to tell it was the agent vs. you. Audit logs just see &quot;user logged in, did thing.&quot; This is fine until your agent goes rogue or gets compromised, and then good luck explaining to your security team that &quot;the AI did it.&quot;</p>
+</blockquote>
+<p><strong>The Gap That Won&#x27;t Go Away Soon</strong>: Until agents can independently swipe credit cards or authenticate to your enterprise SSO without proxying through you, they&#x27;re stuck in identity limbo. This is the &quot;agent living in your basement&quot; problem—technically part of your household, but awkwardly not quite independent.</p>
+<p><strong>Real-World Chaos</strong>: In 2024, a security researcher demonstrated a desktop agent vulnerability where a malicious website could trick a local AI assistant into executing arbitrary shell commands using the user&#x27;s permissions. The agent had no isolated identity, so it inherited full user permissions. The demo involved the agent accidentally exfiltrating SSH keys to an attacker-controlled server. Whoops.</p>
+<p><strong>How Not to Get Wrecked</strong>:</p>
+<ul>
+<li>Use OS-level sandboxing (AppContainer, App Sandbox—not &quot;pinky promise&quot; security)</li>
+<li>Separate keychains for agent credentials</li>
+<li>Endpoint detection that can distinguish agent behavior from user behavior</li>
+<li>Accept that this is janky and will be for a while</li>
+</ul>
+<hr>
+<h3 id="2-coding-agents-the-please-dont-push-to-main-category">2. Coding Agents (The &quot;Please Don&#x27;t Push to Main&quot; Category)</h3>
+<p><strong>What They Are</strong>: AI agents that live in your development environment and have opinions about your code</p>
+<p><strong>Examples</strong>: GitHub Copilot Workspace, Cursor, that agent that refactored your entire codebase without asking</p>
+<p><strong>The Identity Situation</strong>:
+These agents are scoped to repositories and CI/CD pipelines. They&#x27;re like contractors with backstage passes—they need broad access to do their job, which is precisely what makes them terrifying.</p>
+<p><strong>High-Stakes Access Includes</strong>:</p>
+<ul>
+<li>Your source code (including that TODO comment about the security bug)</li>
+<li>Build pipelines (one malicious commit away from supply chain attack)</li>
+<li>Secrets management (AWS keys, API tokens, database passwords)</li>
+<li>Deployment systems (production is just one merge away!)</li>
+</ul>
+<p><strong>The Nightmare Scenario</strong>: A coding agent with over-broad permissions could:</p>
+<ol>
+<li>Read secrets from your CI/CD environment</li>
+<li>Commit them to a public branch</li>
+<li>Trigger a build that deploys backdoored code to production</li>
+<li>And it would all look like legitimate development activity</li>
+</ol>
+<p><strong>This Actually Happened</strong>: In 2023, a major enterprise had an AI coding assistant that automatically fixed &quot;code quality issues.&quot; It was given write access to repositories for convenience. The agent identified &quot;unused&quot; environment variables (they were used, just in a way the agent didn&#x27;t understand) and removed them. This included database connection strings and API keys. The commits were automatically merged. Production went down for six hours. The agent was very proud of its &quot;cleaned up code.&quot;</p>
+<p><strong>How to Sleep at Night</strong>:</p>
+<ul>
+<li><strong>Repository-scoped tokens</strong> that explicitly list what the agent can touch</li>
+<li><strong>Branch protection rules</strong> - agents can&#x27;t bypass the PR process</li>
+<li><strong>Secrets scanning</strong> on every agent commit (trust, but verify, then verify again)</li>
+<li><strong>Just-in-time deployment access</strong> - agents should REQUEST permission to deploy, not have standing access</li>
+<li><strong>Separate credentials</strong> for read (dev) vs. write (prod) operations</li>
+<li><strong>Policy-as-code</strong> that&#x27;s versioned alongside your actual code</li>
+</ul>
+<hr>
+<h3 id="3-subscribed-agents-the-we-promise-were-secure-trust-us-category">3. Subscribed Agents (The &quot;We Promise We&#x27;re Secure, Trust Us&quot; Category)</h3>
+<p><strong>What They Are</strong>: AI agents embedded in SaaS platforms, managed by vendors who pinky-swear they&#x27;re secure</p>
+<p><strong>Examples</strong>: Salesforce Einstein, ServiceNow AI agents, Microsoft Copilot, that new AI feature your sales team bought without consulting security</p>
+<p><strong>The Identity Situation</strong>:
+The vendor manages the agent&#x27;s entire identity lifecycle. You&#x27;re essentially trusting them with your data and hoping their identity management isn&#x27;t held together with duct tape and prayers.</p>
+<p><strong>Trust Anchor</strong>: Whatever the vendor&#x27;s using (hopefully not a sticky note with passwords)</p>
+<p><strong>The Control Problem</strong>:
+You can&#x27;t see the agent&#x27;s credentials. You can&#x27;t rotate them. You can&#x27;t even verify they exist. It&#x27;s a &quot;black box of trust&quot; situation, which is every CISO&#x27;s favorite thing (it&#x27;s not).</p>
+<p><strong>Challenges That Keep Security Teams Up</strong>:</p>
+<ul>
+<li><strong>Opaque identity</strong>: &quot;How do we know the agent is legitimate?&quot; &quot;The vendor said so.&quot; &quot;…cool.&quot;</li>
+<li><strong>Vendor lock-in</strong>: These identities don&#x27;t export. You&#x27;re married to the platform.</li>
+<li><strong>Compliance tap-dancing</strong>: &quot;Is the agent covered under our DPA?&quot; &quot;¯\<em>(ツ)</em>/¯&quot;</li>
+<li><strong>Zero control</strong>: You can&#x27;t enforce your security policies on the vendor&#x27;s agent</li>
+</ul>
+<p><strong>The Breach You Didn&#x27;t Know Was Coming</strong>: In 2023, a major SaaS provider&#x27;s AI agent was compromised via a vulnerable dependency. The agent had broad access to customer data for &quot;AI insights.&quot; Attackers used the compromised agent identity to access 35,000 customer tenants over three weeks. The detection? A customer noticed their &quot;AI insights&quot; included data from other companies. Big yikes.</p>
+<p><strong>Survival Tactics</strong>:</p>
+<ul>
+<li>Negotiate <strong>contractual controls</strong> (good luck—most vendors will laugh)</li>
+<li>Deploy <strong>API gateways</strong> to mediate between agents and your crown jewels</li>
+<li>Implement <strong>consent management</strong> so at least you know what the agent CAN access</li>
+<li>Monitor <strong>API patterns</strong> for &quot;why is our sales AI agent suddenly hitting the finance database?&quot;</li>
+<li>Require <strong>SOC 2 Type II</strong> certification minimum (if they don&#x27;t have it, run)</li>
+<li>Accept that you&#x27;re trusting a third party and plan accordingly (backups, monitoring, incident response)</li>
+</ul>
+<hr>
+<h3 id="4-self-hosted-agents-the-were-in-control-and-also-responsible-when-it-breaks-category">4. Self-Hosted Agents (The &quot;We&#x27;re in Control (And Also Responsible When It Breaks)&quot; Category)</h3>
+<p><strong>What They Are</strong>: AI agents you deploy on your own infrastructure because you have trust issues (valid) or compliance requirements (also valid)</p>
+<p><strong>Examples</strong>: Custom LLM agents, private GPT deployments, that ambitious project your staff engineer started</p>
+<p><strong>The Identity Situation</strong>:
+YOU manage everything. Identity, lifecycle, access, the works. It&#x27;s empowering and terrifying in equal measure.</p>
+<p><strong>Trust Anchor</strong>: Your enterprise IAM (Active Directory, Okta, or whatever you&#x27;ve spent years tuning)</p>
+<p><strong>The Integration Nightmare</strong>:
+You need these agents to work with:</p>
+<ul>
+<li>Your on-prem Active Directory from 2012</li>
+<li>Your cloud IAM in AWS, Azure, and that GCP project someone started</li>
+<li>Your SaaS apps that use OAuth</li>
+<li>Your legacy systems that use... let&#x27;s not talk about it</li>
+</ul>
+<p>Bridging these is like being a translator at the UN, except all the languages are slightly different dialects of &quot;security theater.&quot;</p>
+<p><strong>Challenges You Signed Up For</strong>:</p>
+<ul>
+<li><strong>Hybrid identity</strong>: Agents need access to both &quot;the old datacenter&quot; and &quot;the new cloud stuff&quot;</li>
+<li><strong>Policy translation</strong>: &quot;Only managers can approve expenses&quot; is easy. &quot;Only agents with deployment context X during change window Y can modify infrastructure Z&quot; is a novel.</li>
+<li><strong>Credential sprawl</strong>: You now have agent credentials in 15 different systems that don&#x27;t talk to each other</li>
+<li><strong>The migration tax</strong>: Every new system means updating agent access controls</li>
+</ul>
+<p><strong>The Breach Postmortem</strong>: A Fortune 500 company deployed a self-hosted AI agent for customer service. They issued it a service account with &quot;read access to customer database&quot;—sounds safe! Except the account also had write access to the logging database (for audit purposes). An attacker compromised the agent, couldn&#x27;t modify customer data directly, but COULD modify logs to hide their tracks, then used the agent&#x27;s network position to pivot to systems that DID have write access. The agent was the perfect beachhead because it had legitimate access to internal networks.</p>
+<p><strong>How to Not Regret Your Choices</strong>:</p>
+<ul>
+<li><strong>Workload identity federation</strong> (SPIFFE/SPIRE is your friend—learn it, love it)</li>
+<li><strong>Extend existing IAM</strong> rather than building a parallel universe of agent identities</li>
+<li><strong>Zero trust architecture</strong> - verify every request, even from agents that seem legit</li>
+<li><strong>Secrets management</strong> (Vault, AWS Secrets Manager—not environment variables, please)</li>
+<li><strong>Service mesh</strong> for mTLS between agents and services (because network-level security)</li>
+<li><strong>Centralized policy engines</strong> (OPA, Cedar) so you&#x27;re not managing policies in 47 places</li>
+<li><strong>SIEM integration</strong> because you need to detect when things go sideways</li>
+</ul>
+<p><strong>The Golden Rule</strong>:</p>
+<blockquote>
+<p>Extend existing enterprise controls, don&#x27;t reinvent the wheel with &quot;but this time with agents!&quot; Your IAM team already solved hard problems. Build on that foundation.</p>
+</blockquote>
+<hr>
+<h3 id="5-cloud-native-agents-the-the-cloud-providers-got-this-category">5. Cloud-Native Agents (The &quot;The Cloud Provider&#x27;s Got This&quot; Category)</h3>
+<p><strong>What They Are</strong>: Ephemeral AI agents deployed in cloud runtimes that appear and disappear like digital mayflies</p>
+<p><strong>Examples</strong>: AWS Lambda agents, Azure Container Instances with ML models, GCP Cloud Run agents</p>
+<p><strong>The Identity Situation</strong>:
+The cloud provider issues a fresh workload identity for every instance. When the agent dies, the identity goes with it. It&#x27;s beautiful, automated, and actually secure.</p>
+<p><strong>Trust Anchor</strong>: Cloud provider&#x27;s identity service (AWS IAM, Azure AD, Google Cloud IAM)</p>
+<p><strong>Why This Is Actually Good</strong>:</p>
+<ul>
+<li><strong>Dynamic credentials</strong>: New identity per agent instance, automatically rotated</li>
+<li><strong>Strong isolation</strong>: Container/VM boundaries enforced by the cloud provider</li>
+<li><strong>Automatic lifecycle</strong>: Identity created on spawn, destroyed on termination</li>
+<li><strong>Native integration</strong>: Works seamlessly with cloud services (shocking, I know)</li>
+</ul>
+<p><strong>The Challenges (Because Nothing&#x27;s Perfect)</strong>:</p>
+<ul>
+<li><strong>Cross-cloud agents</strong>: Getting AWS identities to trust Azure identities is an adventure in federation</li>
+<li><strong>Overprivileged roles</strong>: &quot;Just give it admin to make it work&quot; is how breaches happen</li>
+<li><strong>Rapid scale</strong>: Tracking identity across 1000 agent instances spawning per minute breaks traditional tools</li>
+<li><strong>Cost attribution</strong>: &quot;Which agent ran up the $10K bill?&quot; becomes genuinely hard</li>
+</ul>
+<p><strong>The Breach That Proves the Point</strong>: In 2021, an e-commerce company&#x27;s cloud-native agents were deployed with an IAM role that had &quot;lambda:InvokeFunction&quot; on all functions (for inter-agent communication). Attackers compromised one agent via a code injection vulnerability, then used its overly-broad IAM role to invoke every other Lambda function, including the one with database admin credentials. The entire customer database was exfiltrated through a chain of agent-to-agent calls. The initial foothold was tiny; the IAM permissions made it catastrophic.</p>
+<p><strong>The Better Way</strong>:</p>
+<ul>
+<li><strong>Cloud-native workload identity</strong> (don&#x27;t fight the platform, use its tools)</li>
+<li><strong>Least-privilege IAM</strong> - every agent gets ONLY what it needs, not &quot;close enough&quot;</li>
+<li><strong>Automatic rotation</strong> - credentials should change more often than your oil</li>
+<li><strong>VPC endpoints and private networking</strong> - agents shouldn&#x27;t be on the public internet unless absolutely necessary</li>
+<li><strong>Cloud-native policy engines</strong> (AWS IAM Access Analyzer, Azure Policy, GCP Organization Policies)</li>
+<li><strong>Observability from day one</strong> (CloudTrail, Azure Monitor, GCP Cloud Logging)</li>
+<li><strong>Resource tagging</strong> so you can track which agent is which (and who&#x27;s paying for it)</li>
+</ul>
+<p><strong>The Advantage</strong>: When done right, this is the gold standard. Cloud providers have spent billions solving workload identity. Use their work.</p>
+<hr>
+<h2 id="how-to-not-get-breached-practical-recommendations">How to Not Get Breached: Practical Recommendations</h2>
+<h3 id="for-platform-providers-the-people-building-agent-platforms">For Platform Providers (The People Building Agent Platforms)</h3>
+<p><strong>1. Embrace Workload Identity Standards</strong>
+Stop inventing new identity formats. SPIFFE/SPIRE exists. Use it. We&#x27;re begging you.</p>
+<p><strong>2. Default to Short-Lived Credentials</strong>
+If your default token lifetime is measured in days, you&#x27;re doing it wrong. Think minutes, not months.</p>
+<p><strong>3. Granular Scopes Are Not Optional</strong>
+&quot;Read-write access to everything&quot; is not a permission model. It&#x27;s a security incident waiting for a CVE number.</p>
+<p><strong>4. Make Auditability Trivial</strong>
+Every action should log: agent identity, context, decision rationale. Your customers&#x27; security teams will thank you (or at least stop yelling).</p>
+<p><strong>5. Support Federation</strong>
+Your platform isn&#x27;t the only one in the ecosystem. Play nice with others via OIDC, SAML, and OAuth.</p>
+<h3 id="for-enterprises-the-people-trying-to-secure-this-madness">For Enterprises (The People Trying to Secure This Madness)</h3>
+<p><strong>1. Classify Your Agents</strong>
+Map every agent in your environment to the taxonomy above. You can&#x27;t secure what you don&#x27;t know exists.</p>
+<p><strong>2. Extend, Don&#x27;t Replace</strong>
+You already have IAM infrastructure. Extend it for agents rather than building &quot;Agent IAM 2.0&quot; from scratch.</p>
+<p><strong>3. Policy-as-Code Is Your Friend</strong>
+Version control your access policies. Treat them like infrastructure. Review them like code.</p>
+<p><strong>4. Monitor Everything</strong>
+Deploy anomaly detection. If an agent suddenly accesses something new at 3 AM, you should know immediately.</p>
+<p><strong>5. Start Broad, Tighten Incrementally</strong>
+Begin with permissive policies while you learn agent behavior patterns. Then tighten based on observed needs. Don&#x27;t start with &quot;no access&quot; and wonder why nothing works.</p>
+<p><strong>6. Implement Secrets Scanning</strong>
+Any agent with code access needs secrets scanning on every commit. No exceptions. GitHub Advanced Security, TruffleHog, git-secrets—pick one.</p>
+<p><strong>7. Practice Incident Response</strong>
+Run tabletop exercises: &quot;An agent is compromised. Now what?&quot; You&#x27;ll find gaps before attackers do.</p>
+<h3 id="for-agent-developers-the-people-writing-agent-code">For Agent Developers (The People Writing Agent Code)</h3>
+<p><strong>1. Request Minimal Permissions</strong>
+Ask for the least access needed. Your agent doesn&#x27;t need admin rights &quot;just in case.&quot;</p>
+<p><strong>2. Handle Credential Rotation Gracefully</strong>
+Design agents to transparently refresh credentials. Hardcoded tokens are a security antipattern.</p>
+<p><strong>3. Log Everything</strong>
+Structured logs that include: what you accessed, why, when, and with what identity. Make forensics easy.</p>
+<p><strong>4. Propagate Context</strong>
+If your agent calls another agent, pass along delegation context. Chain of custody matters.</p>
+<p><strong>5. Fail Securely</strong>
+When in doubt, deny. An authorization error is better than a security breach.</p>
+<p><strong>6. Test with Realistic Permissions</strong>
+Don&#x27;t develop with admin and ship with least-privilege. Test in an environment that mirrors production permissions.</p>
+<hr>
+<h2 id="the-crystal-ball-whats-coming">The Crystal Ball: What&#x27;s Coming</h2>
+<h3 id="short-term-2026-2027-the-chaos-continues">Short-Term (2026-2027): The Chaos Continues</h3>
+<ul>
+<li><strong>Protocol wars</strong>: MCP vs A2A vs ACP—someone will win, most will fade</li>
+<li><strong>Cloud providers double down</strong>: AWS, Azure, GCP will enhance workload identity for AI-specific workloads</li>
+<li><strong>Early adopters become case studies</strong>: Some success stories, some breaches, lots of lessons</li>
+</ul>
+<h3 id="medium-term-2028-2030-standards-emerge">Medium-Term (2028-2030): Standards Emerge</h3>
+<ul>
+<li><strong>Industry standards</strong>: IETF or OWASP will publish &quot;The One True Agent IAM Standard&quot; (or at least try)</li>
+<li><strong>Regulatory requirements</strong>: Governments will mandate agent identity and accountability (GDPR for agents?)</li>
+<li><strong>Tooling matures</strong>: Third-party IAM vendors ship agent-native products that actually work</li>
+<li><strong>First major agent-related breach</strong> makes headlines, everyone panic-updates their security policies</li>
+</ul>
+<h3 id="long-term-2030-agent-native-world">Long-Term (2030+): Agent-Native World</h3>
+<ul>
+<li><strong>Purpose-built IAM</strong>: Identity systems designed from scratch for agents, not retrofitted from human IAM</li>
+<li><strong>Autonomous credential management</strong>: Agents that negotiate their own access based on policy (terrifying and cool)</li>
+<li><strong>Decentralized identity</strong>: Blockchain-based agent identities for cross-org trust (yes, we&#x27;re still talking about blockchain)</li>
+<li><strong>AI-powered IAM</strong>: AI that manages AI identities (we&#x27;ve reached peak meta)</li>
+</ul>
+<p><strong>Bold Prediction</strong>: By 2032, agent-to-agent authentication will exceed human-to-service authentication in volume. IAM teams that don&#x27;t adapt will be managing the legacy systems, not the future.</p>
+<hr>
+<h2 id="the-bottom-line-because-you-scrolled-to-the-end">The Bottom Line (Because You Scrolled to the End)</h2>
+<p>Here&#x27;s what you need to know:</p>
+<p><strong>The Problem</strong>: IAM was built for humans. AI agents are not humans. Treating them like humans with API keys is a recipe for security incidents that&#x27;ll make you famous on r/cybersecurity (in a bad way).</p>
+<p><strong>The Solution</strong>: Treat agents as <strong>delegated workloads</strong> with:</p>
+<ul>
+<li>Unique cryptographic identities</li>
+<li>Policy-based, context-aware access control</li>
+<li>Short-lived, auto-rotating credentials</li>
+<li>Continuous trust evaluation</li>
+</ul>
+<p><strong>The Reality</strong>: We&#x27;re in the messy middle. Standards are fragmented. Protocols are competing. Cloud providers are doing their own thing. The industry will figure it out eventually, but &quot;eventually&quot; means you need to make smart choices NOW with imperfect tools.</p>
+<p><strong>The Action Item</strong>:</p>
+<ol>
+<li>Audit what agents you have (you have more than you think)</li>
+<li>Classify them using the taxonomy above</li>
+<li>Apply workload identity principles to the highest-risk agents first</li>
+<li>Iterate and tighten policies based on observed behavior</li>
+<li>Monitor everything because attackers are also reading articles like this</li>
+</ol>
+<p><strong>The Stakes</strong>: Organizations that nail agent IAM will safely leverage autonomous systems at scale. Organizations that don&#x27;t will be case studies in &quot;what not to do&quot; sections of future conference talks.</p>
+<p>The age of AI agents is here. Your IAM system needs to evolve or become the weakest link. Choose wisely.</p>
+<hr>
+<h2 id="further-reading-for-when-you-want-to-go-deeper">Further Reading (For When You Want to Go Deeper)</h2>
+<ul>
+<li><strong>SPIFFE/SPIRE</strong>: The workload identity framework that actually makes sense (<a href="https://spiffe.io">spiffe.io</a>)</li>
+<li><strong>OWASP Top 10 for LLM Applications</strong>: Security considerations you didn&#x27;t know you needed</li>
+<li><strong>NIST SP 800-204C</strong>: DevSecOps for cloud-native applications (includes workload identity goodness)</li>
+<li><strong>Cloud Security Alliance AI/ML Security Guidelines</strong>: For when compliance asks &quot;what&#x27;s our framework?&quot;</li>
+<li><strong>Anthropic MCP Docs</strong>: If you want to understand how context protocols work</li>
+<li><strong>&quot;Supply Chain Security for AI&quot;</strong>: The book that&#x27;ll make you paranoid about your dependencies (in a good way)</li>
+</ul>
+<hr>
+<p><em>Document Version: 1.0 (now with 100% more personality)</em>
+<em>Last Updated: 2026-05-12</em>
+<em>Audience: Security architects who appreciate humor, IAM engineers who&#x27;ve seen things, AI developers who want to not cause incidents, and anyone who&#x27;s ever yelled &quot;WHY DOES THIS AGENT HAVE ADMIN RIGHTS?&quot; at their screen</em></p>
+<p><em>Disclaimer: Real security incidents cited have been slightly anonymized to protect the embarrassed. If you recognized your company, no you didn&#x27;t.</em></p>
 
                 
                 <!-- Required only on API pages -->
@@ -203,6 +577,6 @@
 
     <div id="retype-overlay-target"></div>
 
-        <script data-cfasync="false">window.__DOCS__ = { "title": "IAM for agents", level: 2, icon: "file", hasPrism: false, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/security/iam_for_agents.md" }</script>
+        <script data-cfasync="false">window.__DOCS__ = { "title": "Identity and Access Management for AI Agents: Why Your IAM is Having an Existential Crisis", level: 2, icon: "file", hasPrism: false, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/security/iam_for_agents.md" }</script>
 </body>
 </html>
