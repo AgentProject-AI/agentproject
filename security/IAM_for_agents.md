@@ -5,6 +5,7 @@
 
 Your IAM system is freaking out because AI agents are crashing the party, and they didn't bring ID. Traditional identity systems were built for humans who take coffee breaks—not autonomous agents that make 10,000 API calls before your morning standup. Spoiler alert: treating AI agents like fast interns is a security disaster waiting to happen.
 
+Posted originally here on [linkedin](https://www.linkedin.com/feed/update/urn:li:activity:7460012600857112577/)
 ---
 
 ## Houston, We Have an Identity Problem
@@ -27,7 +28,7 @@ But AI agents are built different:
 - They span **multiple systems** faster than you can say "zero trust architecture"
 - They blur the line between user, app, and infrastructure in ways that make your security team cry
 
-### The Identity Crisis Nobody Saw Coming
+### The Identity Crisis ....
 
 When your coding agent pushes to production, here's what keeps your CISO up at night:
 
@@ -40,9 +41,9 @@ When your coding agent pushes to production, here's what keeps your CISO up at n
 
 ---
 
-## The Fragmentation Fiasco: Everyone's Solving This Differently (And None of Them Talk to Each Other)
+## The Fragmentation is real: Everyone's Solving This Differently (And None of Them Talk to Each Other)
 
-### Cloud Providers: "We Got This" (Narrator: They Each Got It Differently)
+### Cloud Providers: "We Got This" (Narrator: yes, they Each Got It for sure .. but differently)
 
 The big three cloud providers looked at agent IAM and said, "How hard could it be? We already do workload identity!" Then they each invented their own special flavor:
 
@@ -79,9 +80,9 @@ The idealistic open standard that wants everyone to get along. Early days, but p
 
 ---
 
-## Plot Twist: Maybe We're Thinking About This Wrong
+## Maybe We're Thinking About This Wrong
 
-### Agents Aren't Humans in Robot Bodies (Stop Treating Them Like They Are)
+### Agents Aren't Humans in Robot Bodies (Stop Treating Them Like They Are Interns...)
 
 Here's the uncomfortable truth: We keep trying to squeeze AI agents into human-shaped IAM holes, and it's not working. It's like using a screwdriver as a hammer—sure, you CAN do it, but everyone's going to judge you, and something's going to break.
 
