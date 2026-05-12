@@ -24,7 +24,7 @@ ___
 
 ### ASI03. Identity & Privilege Abuse
 #### Agent discovery & inventory (continuous)
-#### [Treat agents as first-class identities (Traditional IAM will not work, least privilege, JIT)](security/IAM_for_agents.md)
+#### [Treat agents as first-class identities (Traditional IAM will not work, least privilege, JIT)](/security/IAM_for_agents.md)
 #### Scoped data access & information governance
 #### Policy-as-code, escalation rules & HITL frameworks
 
