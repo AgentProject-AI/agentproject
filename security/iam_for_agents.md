@@ -427,8 +427,6 @@ The age of AI agents is here. Your IAM system needs to evolve or become the weak
 
 ---
 
-*Document Version: 1.0 (now with 100% more personality)*
+*Document Version: 1.0 *
 *Last Updated: 2026-05-12*
-*Audience: Security architects who appreciate humor, IAM engineers who've seen things, AI developers who want to not cause incidents, and anyone who's ever yelled "WHY DOES THIS AGENT HAVE ADMIN RIGHTS?" at their screen*
-
-*Disclaimer: Real security incidents cited have been slightly anonymized to protect the embarrassed. If you recognized your company, no you didn't.*
+*Disclaimer: Real security incidents cited have been slightly anonymized to protect the embarrassed.*
