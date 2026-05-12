@@ -7,7 +7,7 @@
   * [How to use Outcome, Role and Interaction (ORI) to design AI Agents for your organization](foundation-of-agent-projects/how-to-use-outcome-role-and-interaction-ori-to-design-ai-agents-for-your-organization.md)
 
 * [Securing AI Agents in production](security/README.md)
-  * [Top 10 AI Agent Security and Governance Controls](security/Top-10-AI-Agent-Security-and-Governance-Controls.md)
+  * [Top 10 AI Agent Security and Governance Controls](security/README.md)
   * [AI Agent Sandboxing: Containers vs WASM vs Kernel-Level Isolation](security/AI_Agent_Sandboxing_Containers_vs_WASM_vs_Kernel-Level_Isolation.md)
 
 ## Other Topics
