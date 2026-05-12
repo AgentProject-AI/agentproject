@@ -4,11 +4,8 @@
 
 - [Welcome to the Agent Project](https://agentproject-ai.github.io/agentproject/readme.md): Welcome to the Agent Project
 - [Top 10 AI Agent Security and Governance Controls (Based on OWASP)](https://agentproject-ai.github.io/agentproject/security/readme.md): [AI Agent Sandboxing and Isolation 👍
+- [Top 10 AI Agent Security and Governance Controls (Based on OWASP)](https://agentproject-ai.github.io/agentproject/security/readme.md): [AI Agent Sandboxing and Isolation 👍
 - [Authors](https://agentproject-ai.github.io/agentproject/authors.md): This is written by a community of practitioners
-
-## Security & Governance
-
-- [Top 10 AI Agent Security and Governance Controls (Based on OWASP)](https://agentproject-ai.github.io/agentproject/security/top-10-ai-agent-security-and-governance-controls.md): [AI Agent Sandboxing and Isolation 👍
 
 ## Other Topics
 
