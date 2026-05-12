@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/agentproject">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831932898394">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831933218475">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,11 +38,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831932898394" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831933218475" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831932898394" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831933218475" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831932898394" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831933218475" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -163,6 +163,7 @@
 <h1 id="identity-and-access-management-for-ai-agents-why-your-iam-is-having-an-existential-crisis">Identity and Access Management for AI Agents: Why Your IAM is Having an Existential Crisis</h1>
 <h2 id="tldr">TL;DR</h2>
 <p>Your IAM system is freaking out because AI agents are crashing the party, and they didn&#x27;t bring ID. Traditional identity systems were built for humans who take coffee breaks—not autonomous agents that make 10,000 API calls before your morning standup. Spoiler alert: treating AI agents like fast interns is a security disaster waiting to happen.</p>
+<p>Posted originally here on <a href="https://www.linkedin.com/feed/update/urn:li:activity:7460012600857112577/">linkedin</a></p>
 <hr>
 <h2 id="houston-we-have-an-identity-problem">Houston, We Have an Identity Problem</h2>
 <h3 id="when-iam-met-ai-agents-it-didnt-go-well">When IAM Met AI Agents (It Didn&#x27;t Go Well)</h3>
@@ -183,7 +184,7 @@
 <li>They span <strong>multiple systems</strong> faster than you can say &quot;zero trust architecture&quot;</li>
 <li>They blur the line between user, app, and infrastructure in ways that make your security team cry</li>
 </ul>
-<h3 id="the-identity-crisis-nobody-saw-coming">The Identity Crisis Nobody Saw Coming</h3>
+<h3 id="the-identity-crisis-">The Identity Crisis ....</h3>
 <p>When your coding agent pushes to production, here&#x27;s what keeps your CISO up at night:</p>
 <ul>
 <li><strong>Who&#x27;s actually responsible?</strong> The agent? The developer who invoked it? The platform that hosted it? Yes?</li>
@@ -193,8 +194,8 @@
 </ul>
 <p><strong>Real Talk</strong>: In 2023, a major tech company discovered their AI coding assistant had been committing AWS credentials to public repositories for six months. The credentials had been leaked in over 1,200 commits. The blast radius? Access to production databases across 40+ microservices. The root cause? The agent inherited the developer&#x27;s overly-broad IAM permissions and nobody thought to implement secrets scanning for agent-generated code.</p>
 <hr>
-<h2 id="the-fragmentation-fiasco-everyones-solving-this-differently-and-none-of-them-talk-to-each-other">The Fragmentation Fiasco: Everyone&#x27;s Solving This Differently (And None of Them Talk to Each Other)</h2>
-<h3 id="cloud-providers-we-got-this-narrator-they-each-got-it-differently">Cloud Providers: &quot;We Got This&quot; (Narrator: They Each Got It Differently)</h3>
+<h2 id="the-fragmentation-is-real-everyones-solving-this-differently-and-none-of-them-talk-to-each-other">The Fragmentation is real: Everyone&#x27;s Solving This Differently (And None of Them Talk to Each Other)</h2>
+<h3 id="cloud-providers-we-got-this-narrator-yes-they-each-got-it-for-sure--but-differently">Cloud Providers: &quot;We Got This&quot; (Narrator: yes, they Each Got It for sure .. but differently)</h3>
 <p>The big three cloud providers looked at agent IAM and said, &quot;How hard could it be? We already do workload identity!&quot; Then they each invented their own special flavor:</p>
 <p><strong>AWS</strong>: &quot;Here&#x27;s IAM Roles for Everything, plus some Cognito, and maybe some STS tokens. Good luck!&quot;
 <strong>Azure</strong>: &quot;Managed Identities are magic! Also we have Workload Identity Federation. They&#x27;re different. Don&#x27;t ask.&quot;
@@ -215,8 +216,8 @@
 <p>The idealistic open standard that wants everyone to get along. Early days, but points for trying to solve interoperability. Currently has the &quot;adoption challenge&quot; problem (chicken, meet egg).</p>
 <p><strong>The Reality Check</strong>: None of these protocols talk to each other natively. We&#x27;re speedrunning the browser wars, but for agent identity. Place your bets on which one survives!</p>
 <hr>
-<h2 id="plot-twist-maybe-were-thinking-about-this-wrong">Plot Twist: Maybe We&#x27;re Thinking About This Wrong</h2>
-<h3 id="agents-arent-humans-in-robot-bodies-stop-treating-them-like-they-are">Agents Aren&#x27;t Humans in Robot Bodies (Stop Treating Them Like They Are)</h3>
+<h2 id="maybe-were-thinking-about-this-wrong">Maybe We&#x27;re Thinking About This Wrong</h2>
+<h3 id="agents-arent-humans-in-robot-bodies-stop-treating-them-like-they-are-interns">Agents Aren&#x27;t Humans in Robot Bodies (Stop Treating Them Like They Are Interns...)</h3>
 <p>Here&#x27;s the uncomfortable truth: We keep trying to squeeze AI agents into human-shaped IAM holes, and it&#x27;s not working. It&#x27;s like using a screwdriver as a hammer—sure, you CAN do it, but everyone&#x27;s going to judge you, and something&#x27;s going to break.</p>
 <p><strong>The paradigm shift</strong>:</p>
 <blockquote>
