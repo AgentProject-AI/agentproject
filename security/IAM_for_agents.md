@@ -3,7 +3,7 @@
 
 ## TL;DR
 
-Your IAM system is freaking out because AI agents are crashing the party, and they didn't bring ID. Traditional identity systems were built for humans who take coffee breaks—not autonomous agents that make 10,000 API calls before your morning standup. Spoiler alert: treating AI agents like really fast interns is a security disaster waiting to happen.
+Your IAM system is freaking out because AI agents are crashing the party, and they didn't bring ID. Traditional identity systems were built for humans who take coffee breaks—not autonomous agents that make 10,000 API calls before your morning standup. Spoiler alert: treating AI agents like fast interns is a security disaster waiting to happen.
 
 ---
 
