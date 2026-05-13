@@ -7,6 +7,10 @@
 - [Top 10 AI Agent Security and Governance Controls (Based on OWASP)](https://agentproject-ai.github.io/agentproject/security/readme.md): [AI Agent Sandboxing and Isolation 👍
 - [Authors](https://agentproject-ai.github.io/agentproject/authors.md): This is written by a community of practitioners
 
+## Security & Governance
+
+- [AI Agent Sandboxing Containers vs WASM vs Kernel-Level Isolation](https://agentproject-ai.github.io/agentproject/security/ai_agent_sandboxing_containers_vs_wasm_vs_kernel-level_isolation.md)
+
 ## Other Topics
 
 - [Exhaustive list of Agent Frameworks](https://agentproject-ai.github.io/agentproject/topics/exhaustive-list-of-agent-frameworks.md): Description: Framework for orchestrating, optimizing, and automating LLM workflows with multi-agent systems.
