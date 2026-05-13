@@ -9,7 +9,7 @@
 
 ## Security & Governance
 
-- [AI Agent Sandboxing Containers vs WASM vs Kernel-Level Isolation](https://agentproject-ai.github.io/agentproject/security/ai_agent_sandboxing_containers_vs_wasm_vs_kernel-level_isolation.md)
+- [AI Agent Sandboxing: Containers vs WASM vs Kernel-Level Isolation](https://agentproject-ai.github.io/agentproject/security/ai_agent_sandboxing_containers_vs_wasm_vs_kernel-level_isolation.md): The shift from "AI that suggests" to "AI that acts" requires moving monitoring from the application layer to the infrastructure layer. If an agent is compromised, its own logs cannot be trusted for governance.
 
 ## Other Topics
 
