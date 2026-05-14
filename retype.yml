@@ -4,6 +4,8 @@ url: https://agentproject-ai.github.io/agentproject/
 branding:
   title: Agent Project
   label: Docs
+defaults:
+  layout: central
 links:
 - text: Foundation of Agent Projects
   link: /Foundation-of-agent-projects/
