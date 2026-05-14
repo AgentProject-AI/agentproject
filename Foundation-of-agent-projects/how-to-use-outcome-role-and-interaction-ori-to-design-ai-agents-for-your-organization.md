@@ -1,3 +1,8 @@
+---
+label: ORI Design Framework
+order: 800
+---
+
 # How to use Outcome, Role and Interaction (ORI) to design AI Agents for your organization
 
 In the rapidly evolving landscape of artificial intelligence, designing effective [agent workflow systems](different-agent-workflow-patterns.md) requires a structured methodology that balances complexity with predictability. The **ORI (Outcome > Role > Interaction)** design approach offers a systematic framework for architecting AI agent workflows that are both powerful and practical.&#x20;

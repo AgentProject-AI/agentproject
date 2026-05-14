@@ -1,4 +1,6 @@
 ---
+label: Agent Workflow Patterns
+order: 950
 description: Different flavors of Agents workflows
 ---
 
