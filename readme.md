@@ -31,7 +31,7 @@ The github repo is here : [https://github.com/AgentProject-AI/agentproject](http
   * **Agent Observability**: Addressing the complexities of evaluating AI agent performance.
 
 ### Part 2: Securing Your Agent Project in Production
-* [<mark style="background-color:yellow;">**[Top 10 AI Agent Security and Governance Controls (OWASP Style)</mark>](security/Top-10-AI-Agent-Security-and-Governance-Controls.md)** :thumbsup:
+* [<mark style="background-color:yellow;">**[Top 10 AI Agent Security and Governance Controls (OWASP Style)</mark>](security/README.md)** :thumbsup:
 * **Deployment Strategies:**
   * Considerations for deploying agent applications.
   * Containerization and orchestration.
