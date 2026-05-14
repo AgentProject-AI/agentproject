@@ -1,6 +1,7 @@
 ---
 permalink: /foundation-of-agent-projects/how-to-use-outcome-role-and-interaction-ori-to-design-ai-agents-for-your-organization
 visibility: hidden
+layout: central
 ---
 
 # How to use Outcome, Role and Interaction (ORI) to design AI Agents for your organization

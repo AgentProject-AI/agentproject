@@ -1,5 +1,6 @@
 ---
 icon: hand-wave
+layout: central
 ---
 
 # Welcome to the Agent Project

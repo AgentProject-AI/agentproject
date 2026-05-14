@@ -5,6 +5,7 @@ label: Foundation of Agent Projects
 expanded: false
 visibility: hidden
 permalink: /foundation-of-agent-projects
+layout: central
 ---
 
 # 1. Foundation of Agent Projects

@@ -2,6 +2,7 @@
 description: Different flavors of Agents workflows
 permalink: /foundation-of-agent-projects/different-agent-workflow-patterns
 visibility: hidden
+layout: central
 ---
 
 # Different Agent Workflow Implementation Patterns

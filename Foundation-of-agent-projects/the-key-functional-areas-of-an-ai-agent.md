@@ -1,6 +1,7 @@
 ---
 permalink: /foundation-of-agent-projects/the-key-functional-areas-of-an-ai-agent
 visibility: hidden
+layout: central
 ---
 
 # The key functional areas of an AI agent
