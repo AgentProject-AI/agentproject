@@ -1,6 +1,7 @@
 ---
 label: Key Functional Areas
 order: 900
+route: /foundation-of-agent-projects/the-key-functional-areas-of-an-ai-agent/
 ---
 
 # The key functional areas of an AI agent
