@@ -1,3 +1,5 @@
+layout: central
+
 # Exhaustive list of Agent Frameworks
 
 ### AG2

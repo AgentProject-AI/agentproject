@@ -1,3 +1,5 @@
+layout: central
+
 # Authors
 
 This is written by a community of practitioners

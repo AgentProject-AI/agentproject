@@ -1,3 +1,5 @@
+layout: central
+
 # Agent Framework Scorecard (Explained)
 
 {% embed url="https://docs.google.com/spreadsheets/d/1s7OiGMWiROPZuLwIbhAyptG8RKY2AU4C3znhWrl23Cg/edit?gid=0#gid=0" %}

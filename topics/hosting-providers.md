@@ -1,3 +1,5 @@
+layout: central
+
 # Agent Hosting Providers
 
 https://fireworks.ai/

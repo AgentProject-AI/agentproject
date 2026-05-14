@@ -1,3 +1,5 @@
+layout: central
+
 # Top 10 AI Agent Security and Governance Controls (Based on OWASP)
 
 ### ASI01. Agent Goal Hijack
