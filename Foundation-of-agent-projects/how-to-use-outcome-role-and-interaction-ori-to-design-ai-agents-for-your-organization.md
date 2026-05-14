@@ -1,6 +1,4 @@
 ---
-label: ORI Design Framework
-order: 800
 permalink: /foundation-of-agent-projects/how-to-use-outcome-role-and-interaction-ori-to-design-ai-agents-for-your-organization
 visibility: hidden
 ---
