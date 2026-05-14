@@ -2,6 +2,7 @@
 label: Key Functional Areas
 order: 900
 permalink: /foundation-of-agent-projects/the-key-functional-areas-of-an-ai-agent
+visibility: hidden
 ---
 
 # The key functional areas of an AI agent

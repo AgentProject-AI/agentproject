@@ -3,6 +3,7 @@ label: Agent Workflow Patterns
 order: 950
 description: Different flavors of Agents workflows
 permalink: /foundation-of-agent-projects/different-agent-workflow-patterns
+visibility: hidden
 ---
 
 # Different Agent Workflow Implementation Patterns

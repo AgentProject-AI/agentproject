@@ -2,7 +2,8 @@
 icon: rocket
 order: 1000
 label: Foundation of Agent Projects
-expanded: true
+expanded: false
+visibility: hidden
 permalink: /foundation-of-agent-projects
 ---
 
