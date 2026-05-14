@@ -3,6 +3,7 @@ icon: rocket
 order: 1000
 label: Foundation of Agent Projects
 expanded: true
+permalink: /foundation-of-agent-projects
 ---
 
 # 1. Foundation of Agent Projects
