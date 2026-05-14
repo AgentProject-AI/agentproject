@@ -1,8 +1,10 @@
 ---
+layout: central
 icon: list
 order: 400
 label: Agent Frameworks List
 ---
+layout: central
 
 # Exhaustive list of Agent Frameworks
 

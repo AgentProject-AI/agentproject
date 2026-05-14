@@ -1,8 +1,10 @@
 ---
+layout: central
 icon: people
 order: 500
 label: Authors
 ---
+layout: central
 
 # Authors
 

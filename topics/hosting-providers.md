@@ -1,8 +1,10 @@
 ---
+layout: central
 icon: server
 order: 380
 label: Hosting Providers
 ---
+layout: central
 
 # Agent Hosting Providers
 

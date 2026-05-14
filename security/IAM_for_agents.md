@@ -7,6 +7,7 @@ Your IAM system is freaking out because AI agents are crashing the party, and th
 
 Posted originally here on [linkedin](https://www.linkedin.com/feed/update/urn:li:activity:7460012600857112577/)
 ---
+layout: central
 
 ## Houston, We Have an Identity Problem
 

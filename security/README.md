@@ -1,8 +1,10 @@
 ---
+layout: central
 icon: shield-lock
 order: 1000
 label: Security & Governance
 ---
+layout: central
 
 # Top 10 AI Agent Security and Governance Controls (Based on OWASP)
 

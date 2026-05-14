@@ -1,8 +1,10 @@
 ---
+layout: central
 icon: shield-check
 order: 900
 label: Top 10 Security Controls
 ---
+layout: central
 
 # Top 10 AI Agent Security and Governance Controls (Based on OWASP)
 

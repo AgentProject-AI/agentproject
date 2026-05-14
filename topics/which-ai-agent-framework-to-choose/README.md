@@ -1,8 +1,10 @@
 ---
+layout: central
 icon: question
 order: 370
 label: Which Framework to Choose
 ---
+layout: central
 
 # Which AI Agent framework to choose?
 

@@ -1,9 +1,11 @@
 ---
+layout: central
 icon: table
 order: 390
 label: Framework Scorecard
 description: This is the scorecard framework explanation.
 ---
+layout: central
 
 # Agent Framework Scorecard (Explained)
 
