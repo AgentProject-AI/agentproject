@@ -12,6 +12,7 @@ ___
 
 ### ASI02. Tool Misuse & Exploitation
 #### Runtime enforcement & guardian agents
+#### [Securing MCP Servers](/securing_mcp_servers.md))
 #### Ephemeral execution & environment isolation (sandboxing)
 [<mark style="background-color:yellow;">**[AI Agent Sandboxing and Isolation</mark>](/security/AI_Agent_Sandboxing_Containers_vs_WASM_vs_Kernel-Level_Isolation.md)** :thumbsup:
 #### Continuous security testing & adversarial execution
