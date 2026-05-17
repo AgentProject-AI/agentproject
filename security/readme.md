@@ -12,16 +12,16 @@ ___
 
 ### ASI02. Tool Misuse & Exploitation
 #### Runtime enforcement & guardian agents
-#### [Securing MCP Servers](/securing_mcp_servers.md))
+#### [Securing MCP Servers](/security/securing-mcp-servers.md)
 #### Ephemeral execution & environment isolation (sandboxing)
-[<mark style="background-color:yellow;">**[AI Agent Sandboxing and Isolation</mark>](/security/AI_Agent_Sandboxing_Containers_vs_WASM_vs_Kernel-Level_Isolation.md)** :thumbsup:
+<mark style="background-color:yellow;">**[AI Agent Sandboxing and Isolation</mark>](/security/AI_Agent_Sandboxing_Containers_vs_WASM_vs_Kernel-Level_Isolation.md)** :thumbsup:
 #### Continuous security testing & adversarial execution
 
 ---
 
 ### ASI03. Identity & Privilege Abuse
 #### Agent discovery & inventory (continuous)
-#### [Treat agents as first-class identities (Traditional IAM will not work, least privilege, JIT)](/security/IAM_for_agents.md)
+#### [Treat agents as first-class identities](Traditional IAM will not work, least privilege, JIT)](/security/IAM_for_agents.md)
 #### Scoped data access & information governance
 #### Policy-as-code, escalation rules & HITL frameworks
 
