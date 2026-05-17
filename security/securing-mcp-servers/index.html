@@ -11,35 +11,38 @@
     <meta name="generator" content="Retype 4.5.3">
 
     <!-- Primary Meta Tags -->
-    <title>Evaluating Microsoft Autogen</title>
-    <meta name="title" content="Evaluating Microsoft Autogen">
+    <title>Locking Down Your MCP Servers: A Practical Guide to Security &amp; Governance</title>
+    <meta name="title" content="Locking Down Your MCP Servers: A Practical Guide to Security & Governance">
+    <meta name="description" content="If you're running MCP (Model Context Protocol) servers in production, you've probably already realized that \"just plug it in and let the AI do its thing\" isn't a security strategy.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://agentproject-ai.github.io/agentproject/topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen/">
+    <link rel="canonical" href="https://agentproject-ai.github.io/agentproject/security/securing-mcp-servers/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://agentproject-ai.github.io/agentproject/sitemap.xml">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://agentproject-ai.github.io/agentproject/topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen/">
-    <meta property="og:title" content="Evaluating Microsoft Autogen">
+    <meta property="og:url" content="https://agentproject-ai.github.io/agentproject/security/securing-mcp-servers/">
+    <meta property="og:title" content="Locking Down Your MCP Servers: A Practical Guide to Security & Governance">
+    <meta property="og:description" content="If you're running MCP (Model Context Protocol) servers in production, you've probably already realized that \"just plug it in and let the AI do its thing\" isn't a security strategy.">
     <meta property="og:site_name" content="Agent Project">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://agentproject-ai.github.io/agentproject/topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen/">
-    <meta name="twitter:title" content="Evaluating Microsoft Autogen">
+    <meta name="twitter:url" content="https://agentproject-ai.github.io/agentproject/security/securing-mcp-servers/">
+    <meta name="twitter:title" content="Locking Down Your MCP Servers: A Practical Guide to Security & Governance">
+    <meta name="twitter:description" content="If you're running MCP (Model Context Protocol) servers in production, you've probably already realized that \"just plug it in and let the AI do its thing\" isn't a security strategy.">
 
     <!-- Alternate Markdown -->
-    <link rel="alternate" type="text/markdown" href="https://agentproject-ai.github.io/agentproject/topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen.md">
+    <link rel="alternate" type="text/markdown" href="https://agentproject-ai.github.io/agentproject/security/securing-mcp-servers.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../resources/css/retype.css?v=4.5.3.832349464763" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.832349464763" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=4.5.3.832349464763" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=4.5.3.832349464763" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.832349464763" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.832349464763" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -67,13 +70,13 @@
                 <nav id="retype-header-nav" class="hidden md:flex">
                     <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
                         <li class="mr-6">
-                            <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../../foundation-of-agent-projects/">Foundation of Agent Projects</a>
+                            <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../foundation-of-agent-projects/">Foundation of Agent Projects</a>
                         </li>
                         <li class="mr-6">
-                            <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../../security/">Securing AI Agents in production</a>
+                            <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../security/">Securing AI Agents in production</a>
                         </li>
                         <li class="mr-6">
-                            <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../../authors/">Authors</a>
+                            <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../authors/">Authors</a>
                         </li>
     
                     </ul>
@@ -125,13 +128,13 @@
                         <nav>
                             <ul class="flex flex-wrap justify-center items-center">
                                 <li class="mr-6">
-                                    <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../../foundation-of-agent-projects/">Foundation of Agent Projects</a>
+                                    <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../foundation-of-agent-projects/">Foundation of Agent Projects</a>
                                 </li>
                                 <li class="mr-6">
-                                    <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../../security/">Securing AI Agents in production</a>
+                                    <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../security/">Securing AI Agents in production</a>
                                 </li>
                                 <li class="mr-6">
-                                    <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../../authors/">Authors</a>
+                                    <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text hover:text-header-text-hover" href="../../authors/">Authors</a>
                                 </li>
         
                             </ul>
@@ -157,12 +160,41 @@
                 <doc-page-actions></doc-page-actions>
 
                 <!-- Page content  -->
-<h1 id="evaluating-microsoft-autogen">Evaluating Microsoft Autogen</h1>
-<figure>
-    <div class="relative w-full mb-6 overflow-hidden pt-9/16">
-        <iframe class="w-full h-full border-0 absolute inset-0" src="https://www.youtube.com/embed/pN3GIeDsYIY" allowfullscreen></iframe>
-    </div>
-</figure>
+<h1 id="locking-down-your-mcp-servers-a-practical-guide-to-security--governance">Locking Down Your MCP Servers: A Practical Guide to Security &amp; Governance</h1>
+<p>If you&#x27;re running MCP (Model Context Protocol) servers in production, you&#x27;ve probably already realized that &quot;just plug it in and let the AI do its thing&quot; isn&#x27;t a security strategy. Here&#x27;s how to actually secure and govern your MCP deployments without turning into a bureaucracy simulator.</p>
+<h2 id="the-four-pillars-but-make-them-actually-useful">The Four Pillars (But Make Them Actually Useful)</h2>
+<h3 id="1-govern-who-controls-what">1. <strong>Govern: Who Controls What</strong></h3>
+<p>Stop letting every engineer spin up their own MCP servers with production credentials. Seriously, stop.</p>
+<p><strong>What you need:</strong></p>
+<ul>
+<li><strong>Private registries</strong> - Host approved MCP servers internally. No random npm packages with 12 downloads.</li>
+<li><strong>Tool allowlists/blocklists</strong> - Your customer support agent doesn&#x27;t need <code translate="no" v-pre>executeShellCommand</code>. Period.</li>
+<li><strong>Centralized credential management</strong> - Vault, OIDC, whatever. Just not <code translate="no" v-pre>.env</code> files scattered across laptops.</li>
+<li><strong>A gateway architecture</strong> - Think of it as a reverse proxy for your AI tools. One enforcement point beats fifty &quot;please follow our guidelines&quot; Slack messages.</li>
+</ul>
+<p><strong>The win:</strong> When someone asks &quot;who approved giving the marketing chatbot database access?&quot; you have an actual answer, not a shrug.</p>
+<h3 id="2-map-know-what-youre-protecting">2. <strong>Map: Know What You&#x27;re Protecting</strong></h3>
+<p>You can&#x27;t secure what you can&#x27;t see. Make a list:</p>
+<ul>
+<li><strong>Agent types</strong> - Customer support bot, code assistant, data analyst, etc.</li>
+<li><strong>Connected servers &amp; tools</strong> - Salesforce MCP server, GitHub server, Postgres query tool...</li>
+<li><strong>Data stores</strong> - Which agents touch PII? PHI? Source code? Customer data?</li>
+<li><strong>Compliance requirements</strong> - GDPR for EU customers, SOC2 for enterprise deals, HIPAA if you&#x27;re in healthcare.</li>
+</ul>
+<p><strong>Pro tip:</strong> Create a simple data-flow diagram. Arrows from agents → MCP servers → actual systems. When your CISO asks &quot;can this AI access customer payment info?&quot; you&#x27;ll know in 10 seconds, not 10 days.</p>
+<h3 id="3-measure-metrics-that-actually-matter">3. <strong>Measure: Metrics That Actually Matter</strong></h3>
+<p>TBD</p>
+<h3 id="4-manage-controls-that-run-themselves">4. <strong>Manage: Controls That Run Themselves</strong></h3>
+<p>Policies in Google Docs don&#x27;t stop breaches. Runtime controls do.</p>
+<p><strong>The layer cake of defenses:</strong></p>
+<ol>
+<li><strong>Authentication</strong> - Mutual TLS, OAuth, API keys with rotation. Pick your poison.</li>
+<li><strong>Sandboxing</strong> - MCP servers in containers/VMs with limited network access.  <a href="/ai_agent_sandboxing_containers_vs_wasm_vs_kernel-level_isolation/">Detailed Sandboxing guide for AI Agent Security</a></li>
+<li><strong>Data Loss Prevention</strong> - Regex patterns, ML classifiers, whatever catches secrets before they leak.</li>
+<li><strong>Gateway enforcement</strong> - Route all MCP traffic through a policy engine that says &quot;nope&quot; before bad things happen.</li>
+<li><strong>SIEM/SOAR integration</strong> - Feed your security logs somewhere that alerts humans when anomalies spike.</li>
+</ol>
+<p><strong>The reality:</strong> New MCP servers will launch. Tools will evolve. Attackers will get creative. Your gateway architecture is the single choke point where you update rules once and protect everything downstream.</p>
 
                 
                 <!-- Required only on API pages -->
@@ -208,6 +240,6 @@
 
     <div id="retype-overlay-target"></div>
 
-        <script data-cfasync="false">window.__DOCS__ = { "title": "Evaluating Microsoft Autogen", level: 3, icon: "file", hasPrism: false, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/topics/which-ai-agent-framework-to-choose/evaluating-microsoft-autogen.md" }</script>
+        <script data-cfasync="false">window.__DOCS__ = { "title": "Locking Down Your MCP Servers: A Practical Guide to Security & Governance", level: 2, icon: "file", hasPrism: false, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/security/securing-mcp-servers.md" }</script>
 </body>
 </html>
